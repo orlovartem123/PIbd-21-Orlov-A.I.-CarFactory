@@ -48,7 +48,8 @@ namespace CarFactoryView
 
         private void CalcSum()
         {
-            if (comboBoxCar.SelectedValue != null && !string.IsNullOrEmpty(textBoxCount.Text))
+            if (comboBoxCar.SelectedValue != null &&
+           !string.IsNullOrEmpty(textBoxCount.Text))
             {
                 try
                 {

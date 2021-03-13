@@ -119,20 +119,11 @@ namespace CarFactoryListImplement.Implements
 
         private OrderViewModel CreateModel(Order order)
         {
-            var carName = "";
-            foreach (var car in source.Cars)
-            {
-                if (car.Id == order.CarId)
-                {
-                    carName = car.CarName;
-                    break;
-                }
-            }
             return new OrderViewModel
             {
                 Id = order.Id,
                 CarId = order.CarId,
-                CarName = carName,
+                CarName = source.Cars.FirstOrDefault(car => car.Id == order.CarId).CarName,
                 Count = order.Count,
                 Sum = order.Sum,
                 Status = order.Status,
