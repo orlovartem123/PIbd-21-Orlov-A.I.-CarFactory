@@ -32,12 +32,14 @@
             this.catalogsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.componentsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.carsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.warehousesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.dataGridView = new System.Windows.Forms.DataGridView();
             this.buttonCreateOrder = new System.Windows.Forms.Button();
             this.buttonOrderReady = new System.Windows.Forms.Button();
             this.buttonRef = new System.Windows.Forms.Button();
             this.buttonTakeInWork = new System.Windows.Forms.Button();
             this.buttonPayOrder = new System.Windows.Forms.Button();
+            this.addComponentsToWarehouseToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).BeginInit();
             this.SuspendLayout();
@@ -56,7 +58,9 @@
             // 
             this.catalogsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.componentsToolStripMenuItem,
-            this.carsToolStripMenuItem});
+            this.carsToolStripMenuItem,
+            this.warehousesToolStripMenuItem,
+            this.addComponentsToWarehouseToolStripMenuItem});
             this.catalogsToolStripMenuItem.Name = "catalogsToolStripMenuItem";
             this.catalogsToolStripMenuItem.Size = new System.Drawing.Size(65, 20);
             this.catalogsToolStripMenuItem.Text = "Catalogs";
@@ -64,16 +68,23 @@
             // componentsToolStripMenuItem
             // 
             this.componentsToolStripMenuItem.Name = "componentsToolStripMenuItem";
-            this.componentsToolStripMenuItem.Size = new System.Drawing.Size(143, 22);
+            this.componentsToolStripMenuItem.Size = new System.Drawing.Size(240, 22);
             this.componentsToolStripMenuItem.Text = "Components";
             this.componentsToolStripMenuItem.Click += new System.EventHandler(this.ComponentsToolStripMenuItem_Click);
             // 
             // carsToolStripMenuItem
             // 
             this.carsToolStripMenuItem.Name = "carsToolStripMenuItem";
-            this.carsToolStripMenuItem.Size = new System.Drawing.Size(143, 22);
+            this.carsToolStripMenuItem.Size = new System.Drawing.Size(240, 22);
             this.carsToolStripMenuItem.Text = "Cars";
             this.carsToolStripMenuItem.Click += new System.EventHandler(this.CarsToolStripMenuItem_Click);
+            // 
+            // warehousesToolStripMenuItem
+            // 
+            this.warehousesToolStripMenuItem.Name = "warehousesToolStripMenuItem";
+            this.warehousesToolStripMenuItem.Size = new System.Drawing.Size(240, 22);
+            this.warehousesToolStripMenuItem.Text = "Warehouses";
+            this.warehousesToolStripMenuItem.Click += new System.EventHandler(this.WarehousesToolStripMenuItem_Click);
             // 
             // dataGridView
             // 
@@ -140,6 +151,13 @@
             this.buttonPayOrder.UseVisualStyleBackColor = true;
             this.buttonPayOrder.Click += new System.EventHandler(this.ButtonPayOrder_Click);
             // 
+            // addComponentsToWarehouseToolStripMenuItem
+            // 
+            this.addComponentsToWarehouseToolStripMenuItem.Name = "addComponentsToWarehouseToolStripMenuItem";
+            this.addComponentsToWarehouseToolStripMenuItem.Size = new System.Drawing.Size(240, 22);
+            this.addComponentsToWarehouseToolStripMenuItem.Text = "Add components to warehouse";
+            this.addComponentsToWarehouseToolStripMenuItem.Click += new System.EventHandler(this.AddComponentsToWarehouseToolStripMenuItem_Click);
+            // 
             // FormCarFactory
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -176,5 +194,7 @@
 		private System.Windows.Forms.Button buttonRef;
 		private System.Windows.Forms.Button buttonTakeInWork;
 		private System.Windows.Forms.Button buttonPayOrder;
-	}
+        private System.Windows.Forms.ToolStripMenuItem warehousesToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem addComponentsToWarehouseToolStripMenuItem;
+    }
 }

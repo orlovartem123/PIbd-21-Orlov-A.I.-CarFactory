@@ -6,20 +6,20 @@ using Unity;
 
 namespace CarFactoryView
 {
-    public partial class FormCars : Form
+    public partial class FormWarehouses : Form
     {
         [Dependency]
         public new IUnityContainer Container { get; set; }
 
-        private readonly CarLogic logic;
+        private readonly WarehouseLogic warehouseLogic;
 
-        public FormCars(CarLogic logic)
+        public FormWarehouses(WarehouseLogic warehouseLogic)
         {
             InitializeComponent();
-            this.logic = logic;
+            this.warehouseLogic = warehouseLogic;
         }
 
-        private void FormCars_Load(object sender, EventArgs e)
+        private void FormWarehouses_Load(object sender, EventArgs e)
         {
             LoadData();
         }
@@ -28,23 +28,24 @@ namespace CarFactoryView
         {
             try
             {
-                var list = logic.Read(null);
+                var list = warehouseLogic.Read(null);
                 if (list != null)
                 {
                     dataGridView.DataSource = list;
                     dataGridView.Columns[0].Visible = false;
-                    dataGridView.Columns[3].Visible = false;
+                    dataGridView.Columns[4].Visible = false;
                 }
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK,
+               MessageBoxIcon.Error);
             }
         }
 
         private void ButtonAdd_Click(object sender, EventArgs e)
         {
-            var form = Container.Resolve<FormCar>();
+            var form = Container.Resolve<FormWarehouse>();
             if (form.ShowDialog() == DialogResult.OK)
             {
                 LoadData();
@@ -55,7 +56,7 @@ namespace CarFactoryView
         {
             if (dataGridView.SelectedRows.Count == 1)
             {
-                var form = Container.Resolve<FormCar>();
+                var form = Container.Resolve<FormWarehouse>();
                 form.Id = Convert.ToInt32(dataGridView.SelectedRows[0].Cells[0].Value);
                 if (form.ShowDialog() == DialogResult.OK)
                 {
@@ -68,16 +69,18 @@ namespace CarFactoryView
         {
             if (dataGridView.SelectedRows.Count == 1)
             {
-                if (MessageBox.Show("Delete Entry", "Question", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                if (MessageBox.Show("Delete Entry", "Question", MessageBoxButtons.YesNo,
+               MessageBoxIcon.Question) == DialogResult.Yes)
                 {
-                    int id = Convert.ToInt32(dataGridView.SelectedRows[0].Cells[0].Value);
+                    int id =Convert.ToInt32(dataGridView.SelectedRows[0].Cells[0].Value);
                     try
                     {
-                        logic.Delete(new CarBindingModel { Id = id });
+                        warehouseLogic.Delete(new WarehouseBindingModel { Id = id });
                     }
                     catch (Exception ex)
                     {
-                        MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK,
+                       MessageBoxIcon.Error);
                     }
                     LoadData();
                 }
