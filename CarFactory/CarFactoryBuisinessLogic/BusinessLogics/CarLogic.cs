@@ -30,7 +30,29 @@ namespace CarFactoryBusinessLogic.BusinessLogics
 		}
 
 		public void CreateOrUpdate(CarBindingModel model)
-		{           
+		{
+            //var currCarView = _carStorage.GetElement(model);
+            //if (currCarView == null)
+            //{
+            //	_carStorage.Insert(new CarBindingModel
+            //	{
+            //		Id = model.Id,
+            //		CarName = model.CarName,
+            //		Price = model.Price,
+            //		CarComponents = model.CarComponents
+            //	});
+            //	return;
+            //}
+            //foreach (var carView in _carStorage.GetFullList())
+            //{
+            //	if (carView.Id == currCarView.Id)
+            //	{
+            //		carView.CarName = model.CarName;
+            //		carView.CarComponents = model.CarComponents;
+            //		carView.Price = model.Price;
+            //		return;
+            //	}
+            //}
             var element = _carStorage.GetElement(new CarBindingModel
             {
                 CarName = model.CarName

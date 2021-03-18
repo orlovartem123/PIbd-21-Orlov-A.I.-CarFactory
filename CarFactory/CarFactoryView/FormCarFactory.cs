@@ -1,13 +1,6 @@
 ﻿using CarFactoryBusinessLogic.BindingModels;
 using CarFactoryBusinessLogic.BusinessLogics;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using Unity;
 
@@ -24,10 +17,6 @@ namespace CarFactoryView
         {
             InitializeComponent();
             this._orderLogic = orderLogic;
-            dataGridView.DataSource = _orderLogic.Read(null);
-            dataGridView.AutoResizeColumns();
-            dataGridView.Columns["Id"].Visible = false;
-            dataGridView.Columns["CarId"].Visible = false;
 
         }
 
@@ -41,6 +30,8 @@ namespace CarFactoryView
             try
             {
                 dataGridView.DataSource = _orderLogic.Read(null);
+                dataGridView.Columns["Id"].Visible = false;
+                dataGridView.Columns["CarId"].Visible = false;
             }
             catch (Exception ex)
             {
