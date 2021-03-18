@@ -1,31 +1,26 @@
 ﻿using CarFactoryBusinessLogic.BindingModels;
 using CarFactoryBusinessLogic.Interfaces;
 using CarFactoryBusinessLogic.ViewModels;
-using CarFactoryListImplement.Models;
+using CarFactoryFileImplement.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace CarFactoryListImplement.Implements
+namespace CarFactoryFileImplement.Implements
 {
     public class WarehouseStorage : IWarehouseStorage
     {
-        private readonly DataListSingleton source;
+        private readonly FileDataListSingleton source;
 
         public WarehouseStorage()
         {
-            source = DataListSingleton.GetInstance();
+            source = FileDataListSingleton.GetInstance();
         }
 
         public List<WarehouseViewModel> GetFullList()
         {
-            List<WarehouseViewModel> result = new List<WarehouseViewModel>();
-            foreach (var warehouse in source.Warehouses)
-            {
-                result.Add(CreateModel(warehouse));
-            }
-            return result;
+            return source.Warehouses.Select(CreateModel).ToList();
         }
 
         public List<WarehouseViewModel> GetFilteredList(WarehouseBindingModel model)
@@ -34,15 +29,10 @@ namespace CarFactoryListImplement.Implements
             {
                 return null;
             }
-            List<WarehouseViewModel> result = new List<WarehouseViewModel>();
-            foreach (var warehouse in source.Warehouses)
-            {
-                if (warehouse.WarehouseName.Contains(model.WarehouseName))
-                {
-                    result.Add(CreateModel(warehouse));
-                }
-            }
-            return result;
+            return source.Warehouses
+                .Where(rec => rec.WarehouseName.Contains(model.WarehouseName))
+                .Select(CreateModel)
+                .ToList();
         }
 
         public WarehouseViewModel GetElement(WarehouseBindingModel model)
@@ -51,62 +41,40 @@ namespace CarFactoryListImplement.Implements
             {
                 return null;
             }
-            foreach (var warehouse in source.Warehouses)
-            {
-                if (warehouse.Id == model.Id || warehouse.WarehouseName == model.WarehouseName)
-                {
-                    return CreateModel(warehouse);
-                }
-            }
-            return null;
+            var warehouse = source.Warehouses.FirstOrDefault(rec => rec.WarehouseName == model.WarehouseName || rec.Id == model.Id);
+            return warehouse != null ? CreateModel(warehouse) : null;
         }
 
         public void Insert(WarehouseBindingModel model)
         {
-            Warehouse tempWarehouse = new Warehouse
+            int maxId = source.Warehouses.Count > 0 ? source.Warehouses.Max(rec => rec.Id) : 0;
+            var warehouse = new Warehouse
             {
-                Id = 1,
+                Id = maxId + 1,
                 WarehouseComponents = new Dictionary<int, int>(),
                 DateCreate = DateTime.Now
             };
-            foreach (var warehouse in source.Warehouses)
-            {
-                if (warehouse.Id >= tempWarehouse.Id)
-                {
-                    tempWarehouse.Id = warehouse.Id + 1;
-                }
-            }
-            source.Warehouses.Add(CreateModel(model, tempWarehouse));
+            source.Warehouses.Add(CreateModel(model, warehouse));
         }
 
         public void Update(WarehouseBindingModel model)
         {
-            Warehouse tempWarehouse = null;
-            foreach (var warehouse in source.Warehouses)
+            var warehouse = source.Warehouses.FirstOrDefault(rec => rec.Id == model.Id);
+            if (warehouse == null)
             {
-                if (warehouse.Id == model.Id)
-                {
-                    tempWarehouse = warehouse;
-                }
+                throw new Exception("Element not found");
             }
-            if (tempWarehouse == null)
-            {
-                throw new Exception("Warehouse not found");
-            }
-            CreateModel(model, tempWarehouse);
+            CreateModel(model, warehouse);
         }
 
         public void Delete(WarehouseBindingModel model)
         {
-            for (int i = 0; i < source.Warehouses.Count; ++i)
+            var warehouse = source.Warehouses.FirstOrDefault(rec => rec.Id == model.Id);
+            if (warehouse == null)
             {
-                if (source.Warehouses[i].Id == model.Id)
-                {
-                    source.Warehouses.RemoveAt(i);
-                    return;
-                }
+                throw new Exception("Element not found");
             }
-            throw new Exception("Warehouse not found");
+            source.Warehouses.Remove(warehouse);
         }
 
         private Warehouse CreateModel(WarehouseBindingModel model, Warehouse warehouse)
@@ -160,9 +128,31 @@ namespace CarFactoryListImplement.Implements
             };
         }
 
-        public bool CheckComponentsCount(int count,Dictionary<int, (string, int)> components)
+        public bool CheckComponentsCount(int count, Dictionary<int, (string, int)> components)
         {
-            throw new NotImplementedException();
+            foreach (var component in components)
+            {
+                int compCount = source.Warehouses.Where(wh => wh.WarehouseComponents.ContainsKey(component.Key))
+                    .Sum(wh => wh.WarehouseComponents[component.Key]);
+                if (compCount < (component.Value.Item2 * count))
+                {
+                    return false;
+                }
+            }
+            foreach (var component in components)
+            {
+                int requiredCount = component.Value.Item2 * count;
+                while (requiredCount > 0)
+                {
+                    var warehouse = source.Warehouses
+                        .FirstOrDefault(wh => wh.WarehouseComponents.ContainsKey(component.Key)
+                        && wh.WarehouseComponents[component.Key] > 0);
+                    int availableCount = warehouse.WarehouseComponents[component.Key];
+                    requiredCount -= availableCount;
+                    warehouse.WarehouseComponents[component.Key] = (requiredCount < 0) ? availableCount - (availableCount + requiredCount) : 0;
+                }
+            }
+            return true;
         }
     }
 }
