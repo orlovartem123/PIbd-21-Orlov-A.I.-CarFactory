@@ -146,6 +146,7 @@ namespace CarFactoryFileImplement
 
         private void SaveOrders()
         {
+            // прописать логику
             if (Orders != null)
             {
                 var xElement = new XElement("Orders");

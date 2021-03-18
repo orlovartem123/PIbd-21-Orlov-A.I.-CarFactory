@@ -73,6 +73,7 @@ namespace CarFactoryView
 			DialogResult = DialogResult.Cancel;
 			Close();
 		}
+
 	}
 }
 
