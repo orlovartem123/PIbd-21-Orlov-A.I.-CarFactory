@@ -3,11 +3,10 @@ using CarFactoryBusinessLogic.Interfaces;
 using CarFactoryBusinessLogic.ViewModels;
 using System;
 using System.Collections.Generic;
-using System.Text;
 
 namespace CarFactoryBusinessLogic.BusinessLogics
 {
-	public class CarLogic
+    public class CarLogic
 	{
 		private readonly ICarStorage _carStorage;
 

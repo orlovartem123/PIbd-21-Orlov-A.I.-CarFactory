@@ -1,10 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.Collections.Generic;
 
 namespace CarFactoryListImplement.Models
 {
-	public class Car
+    public class Car
 	{
 		public int Id { get; set; }
 		public string CarName { get; set; }

@@ -1,11 +1,9 @@
 ﻿using CarFactoryListImplement.Models;
-using System;
 using System.Collections.Generic;
-using System.Text;
 
 namespace CarFactoryListImplement
 {
-	public class DataListSingleton
+    public class DataListSingleton
 	{
 		private static DataListSingleton instance;
 		public List<Component> Components { get; set; }
