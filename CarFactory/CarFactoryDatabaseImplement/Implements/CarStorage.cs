@@ -26,7 +26,6 @@ namespace CarFactoryDatabaseImplement.Implements
                     throw new Exception("Element not found");
                 }
             }
-
         }
 
         public CarViewModel GetElement(CarBindingModel model)

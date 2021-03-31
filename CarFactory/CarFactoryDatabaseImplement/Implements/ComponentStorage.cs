@@ -5,11 +5,10 @@ using CarFactoryDatabaseImplement.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 
 namespace CarFactoryDatabaseImplement.Implements
 {
-	public class ComponentStorage : IComponentStorage
+    public class ComponentStorage : IComponentStorage
 	{
 		public void Delete(ComponentBindingModel model)
 		{

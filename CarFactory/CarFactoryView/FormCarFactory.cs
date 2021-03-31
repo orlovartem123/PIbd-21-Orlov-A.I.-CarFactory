@@ -135,7 +135,7 @@ namespace CarFactoryView
                     {
                         FileName = dialog.FileName
                     });
-                    MessageBox.Show("Выполнено", "Успех", MessageBoxButtons.OK,
+                    MessageBox.Show("Done", "Success", MessageBoxButtons.OK,
                     MessageBoxIcon.Information);
                 }
             }
@@ -149,7 +149,8 @@ namespace CarFactoryView
 
         private void OrdersListToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            var form = Container.Resolve<FormReportOrders>();
+            form.ShowDialog();
         }
     }
 }

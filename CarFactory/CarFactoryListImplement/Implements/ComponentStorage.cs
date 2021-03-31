@@ -4,11 +4,10 @@ using CarFactoryBusinessLogic.ViewModels;
 using CarFactoryListImplement.Models;
 using System;
 using System.Collections.Generic;
-using System.Text;
 
 namespace CarFactoryListImplement.Implements
 {
-	public class ComponentStorage : IComponentStorage
+    public class ComponentStorage : IComponentStorage
 	{
 		private readonly DataListSingleton source;
 

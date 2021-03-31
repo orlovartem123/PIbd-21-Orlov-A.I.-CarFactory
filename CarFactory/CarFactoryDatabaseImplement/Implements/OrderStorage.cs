@@ -2,15 +2,13 @@
 using CarFactoryBusinessLogic.Interfaces;
 using CarFactoryBusinessLogic.ViewModels;
 using CarFactoryDatabaseImplement.Models;
-using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 
 namespace CarFactoryDatabaseImplement.Implements
 {
-	public class OrderStorage : IOrderStorage
+    public class OrderStorage : IOrderStorage
 	{
 		public void Delete(OrderBindingModel model)
 		{
@@ -62,20 +60,20 @@ namespace CarFactoryDatabaseImplement.Implements
 			}
 			using (var context = new CarFactoryDbContext())
 			{
-				return context.Orders
-				.Where(rec => rec.Id == model.Id)
-				.Select(rec => new OrderViewModel
-				{
-					Id = rec.Id,
-					CarId = rec.CarId,
-					CarName = context.Cars.FirstOrDefault(car => car.Id == rec.CarId).CarName,
-					Count = rec.Count,
-					Sum = rec.Sum,
-					Status = rec.Status,
-					DateCreate = rec.DateCreate,
-					DateImplement = rec.DateImplement
-				}).ToList();
-			}
+                return context.Orders
+                    .Where(rec => rec.CarId == model.CarId || (rec.DateCreate >= model.DateFrom && rec.DateCreate <= model.DateTo))
+                    .Select(rec => new OrderViewModel
+                    {
+                        Id = rec.Id,
+                        CarName = rec.Car.CarName,
+                        CarId = rec.CarId,
+                        Count = rec.Count,
+                        Sum = rec.Sum,
+                        Status = rec.Status,
+                        DateCreate = rec.DateCreate,
+                        DateImplement = rec.DateImplement
+                    }).ToList();
+            }
 		}
 
 		public List<OrderViewModel> GetFullList()
@@ -129,24 +127,6 @@ namespace CarFactoryDatabaseImplement.Implements
 			order.DateCreate = model.DateCreate;
 			order.DateImplement = model.DateImplement;
 			return order;
-		}
-
-		private OrderViewModel CreateModel(Order order)
-		{
-			using (var context = new CarFactoryDbContext())
-			{
-				return new OrderViewModel
-				{
-					Id = order.Id,
-					CarId = order.CarId,
-					CarName = context.Cars.FirstOrDefault(car => car.Id == order.CarId)?.CarName,
-					Count = order.Count,
-					Sum = order.Sum,
-					Status = order.Status,
-					DateCreate = order.DateCreate,
-					DateImplement = order?.DateImplement
-				};
-			}
 		}
 	}
 }

@@ -1,11 +1,9 @@
-﻿
-using CarFactoryBusinessLogic.BindingModels;
+﻿using CarFactoryBusinessLogic.BindingModels;
 using CarFactoryBusinessLogic.Enums;
 using CarFactoryBusinessLogic.Interfaces;
 using CarFactoryBusinessLogic.ViewModels;
 using System;
 using System.Collections.Generic;
-using System.Text;
 
 namespace CarFactoryBusinessLogic.BusinessLogics
 {
@@ -61,7 +59,6 @@ namespace CarFactoryBusinessLogic.BusinessLogics
                 Count = order.Count,
                 Sum = order.Sum,
                 DateCreate = order.DateCreate,
-                //DateImplement = DateTime.Now,
                 Status = OrderStatus.Running
             });
         }
@@ -111,6 +108,5 @@ namespace CarFactoryBusinessLogic.BusinessLogics
                 Status = OrderStatus.Paid
             });
         }
-
     }
 }

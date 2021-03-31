@@ -1,12 +1,9 @@
 ﻿using CarFactoryDatabaseImplement.Models;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace CarFactoryDatabaseImplement
 {
-	public class CarFactoryDbContext : DbContext
+    public class CarFactoryDbContext : DbContext
 	{
 		protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
 		{

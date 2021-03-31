@@ -56,8 +56,7 @@ namespace CarFactoryBusinessLogic.BusinessLogics
         {
             return _orderStorage.GetFilteredList(new OrderBindingModel
             {
-                DateFrom =
-           model.DateFrom,
+                DateFrom = model.DateFrom,
                 DateTo = model.DateTo
             })
             .Select(x => new ReportOrdersViewModel
@@ -76,7 +75,6 @@ namespace CarFactoryBusinessLogic.BusinessLogics
                 FileName = model.FileName,
                 Title = "Cars list",
                 Cars = _carStorage.GetFullList()
-
             });
         }
         /// <summary>
@@ -92,10 +90,12 @@ namespace CarFactoryBusinessLogic.BusinessLogics
                 CarComponents = GetCarComponent()
             });
         }
+
         /// <summary>
         /// Сохранение заказов в файл-Pdf
         /// </summary>
         /// <param name="model"></param>
+        [Obsolete]
         public void SaveOrdersToPdfFile(ReportBindingModel model)
         {
             SaveToPdf.CreateDoc(new PdfInfo

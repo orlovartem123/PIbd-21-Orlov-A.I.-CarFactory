@@ -299,12 +299,12 @@ namespace CarFactoryBusinessLogic.BusinessLogics
             });
             StylesheetExtension stylesheetExtension2 = new StylesheetExtension()
             {
-                Uri ="{9260A510-F301-46a8-8635-F512D64BE5F5}"
+                Uri = "{9260A510-F301-46a8-8635-F512D64BE5F5}"
             };
-            stylesheetExtension2.AddNamespaceDeclaration("x15","http://schemas.microsoft.com/office/spreadsheetml/2010/11/main");
+            stylesheetExtension2.AddNamespaceDeclaration("x15", "http://schemas.microsoft.com/office/spreadsheetml/2010/11/main");
             stylesheetExtension2.Append(new TimelineStyles()
             {
-                DefaultTimelineStyle ="TimeSlicerStyleLight1"
+                DefaultTimelineStyle = "TimeSlicerStyleLight1"
             });
             stylesheetExtensionList.Append(stylesheetExtension1);
             stylesheetExtensionList.Append(stylesheetExtension2);

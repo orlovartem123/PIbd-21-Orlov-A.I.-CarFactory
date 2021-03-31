@@ -1,8 +1,6 @@
 ﻿using CarFactoryBusinessLogic.Enums;
 using System;
-using System.Collections.Generic;
 using System.ComponentModel;
-using System.Text;
 
 namespace CarFactoryBusinessLogic.ViewModels
 {
@@ -27,6 +25,6 @@ namespace CarFactoryBusinessLogic.ViewModels
         public DateTime DateCreate { get; set; }
 
         [DisplayName("Complition date")]
-        public DateTime? DateImplement { get; set; }
+        public DateTime? DateImplement { get; set; }
     }
 }
