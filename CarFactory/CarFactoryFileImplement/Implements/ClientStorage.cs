@@ -85,7 +85,9 @@ namespace CarFactoryFileImplement.Implements
             return new ClientViewModel
             {
                 Id = client.Id,
-                ClientFIO = client.ClientFIO
+                ClientFIO = client.ClientFIO,
+                Email = client.Email,
+                Password = client.Password
             };
         }
     }

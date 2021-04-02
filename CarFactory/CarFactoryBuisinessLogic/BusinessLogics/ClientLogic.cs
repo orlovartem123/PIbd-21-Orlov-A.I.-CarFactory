@@ -47,5 +47,15 @@ namespace CarFactoryBusinessLogic.BusinessLogics
                 _clientStorage.Insert(model);
             }
         }
+
+        public void Delete(ClientBindingModel model)
+        {
+            var element = _clientStorage.GetElement(new ClientBindingModel { Id = model.Id });
+            if (element == null)
+            {
+                throw new Exception("client not found");
+            }
+            _clientStorage.Delete(model);
+        }
     }
 }

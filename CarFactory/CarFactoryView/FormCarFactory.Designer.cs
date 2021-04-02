@@ -42,6 +42,7 @@
             this.buttonRef = new System.Windows.Forms.Button();
             this.buttonTakeInWork = new System.Windows.Forms.Button();
             this.buttonPayOrder = new System.Windows.Forms.Button();
+            this.clientsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).BeginInit();
             this.SuspendLayout();
@@ -61,7 +62,8 @@
             // 
             this.catalogsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.componentsToolStripMenuItem,
-            this.carsToolStripMenuItem});
+            this.carsToolStripMenuItem,
+            this.clientsToolStripMenuItem});
             this.catalogsToolStripMenuItem.Name = "catalogsToolStripMenuItem";
             this.catalogsToolStripMenuItem.Size = new System.Drawing.Size(65, 20);
             this.catalogsToolStripMenuItem.Text = "Catalogs";
@@ -69,14 +71,14 @@
             // componentsToolStripMenuItem
             // 
             this.componentsToolStripMenuItem.Name = "componentsToolStripMenuItem";
-            this.componentsToolStripMenuItem.Size = new System.Drawing.Size(143, 22);
+            this.componentsToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.componentsToolStripMenuItem.Text = "Components";
             this.componentsToolStripMenuItem.Click += new System.EventHandler(this.ComponentsToolStripMenuItem_Click);
             // 
             // carsToolStripMenuItem
             // 
             this.carsToolStripMenuItem.Name = "carsToolStripMenuItem";
-            this.carsToolStripMenuItem.Size = new System.Drawing.Size(143, 22);
+            this.carsToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.carsToolStripMenuItem.Text = "Cars";
             this.carsToolStripMenuItem.Click += new System.EventHandler(this.CarsToolStripMenuItem_Click);
             // 
@@ -176,6 +178,13 @@
             this.buttonPayOrder.UseVisualStyleBackColor = true;
             this.buttonPayOrder.Click += new System.EventHandler(this.ButtonPayOrder_Click);
             // 
+            // clientsToolStripMenuItem
+            // 
+            this.clientsToolStripMenuItem.Name = "clientsToolStripMenuItem";
+            this.clientsToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.clientsToolStripMenuItem.Text = "Clients";
+            this.clientsToolStripMenuItem.Click += new System.EventHandler(this.clientsToolStripMenuItem_Click);
+            // 
             // FormCarFactory
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -216,5 +225,6 @@
         private System.Windows.Forms.ToolStripMenuItem componentsListToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem componentsByCarsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem ordersListToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem clientsToolStripMenuItem;
     }
 }

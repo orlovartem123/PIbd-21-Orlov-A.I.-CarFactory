@@ -40,6 +40,13 @@ namespace CarFactoryClientApp.Controllers
             if (!string.IsNullOrEmpty(login) && !string.IsNullOrEmpty(password) && !string.IsNullOrEmpty(fio))
             {
                 //прописать запрос
+                APIClient.PostRequest("api/client/updatedata", new ClientBindingModel
+                {
+                    Id = Program.Client.Id,
+                    ClientFIO = fio,
+                    Email = login,
+                    Password = password
+                });
                 Program.Client.ClientFIO = fio;
                 Program.Client.Email = login;
                 Program.Client.Password = password;

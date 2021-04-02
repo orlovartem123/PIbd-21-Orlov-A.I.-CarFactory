@@ -16,21 +16,28 @@ namespace CarFactoryView
 
         private readonly OrderLogic _logicO;
 
-        public FormCreateOrder(CarLogic logicС, OrderLogic logicO)
+        private readonly ClientLogic _logicClient;
+
+        public FormCreateOrder(CarLogic logicС, OrderLogic logicO, ClientLogic logicClient)
         {
             InitializeComponent();
             _logicС = logicС;
             _logicO = logicO;
+            _logicClient = logicClient;
         }
 
         private void FormCreateOrder_Load(object sender, EventArgs e)
         {
             try
             {
-                var list = _logicС.Read(null);
-                comboBoxCar.DataSource = list;
+                var cars = _logicС.Read(null);
+                var clients = _logicClient.Read(null);
+                comboBoxCar.DataSource = cars;
                 comboBoxCar.DisplayMember = "CarName";
                 comboBoxCar.ValueMember = "Id";
+                comboBoxClients.DataSource = clients;
+                comboBoxClients.DisplayMember = "ClientFIO";
+                comboBoxClients.ValueMember = "Id";
             }
             catch (Exception ex)
             {
@@ -86,11 +93,18 @@ namespace CarFactoryView
                MessageBoxIcon.Error);
                 return;
             }
+            if (comboBoxClients.SelectedValue == null)
+            {
+                MessageBox.Show("Select client", "Error", MessageBoxButtons.OK,
+               MessageBoxIcon.Error);
+                return;
+            }
             try
             {
                 _logicO.CreateOrder(new CreateOrderBindingModel
                 {
                     CarId = Convert.ToInt32(comboBoxCar.SelectedValue),
+                    ClientId = Convert.ToInt32(comboBoxClients.SelectedValue),
                     Count = Convert.ToInt32(textBoxCount.Text),
                     Sum = Convert.ToDecimal(textBoxSum.Text)
                 });
