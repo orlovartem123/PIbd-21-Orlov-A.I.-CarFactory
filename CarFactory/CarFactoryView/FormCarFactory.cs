@@ -128,7 +128,7 @@ namespace CarFactoryView
             LoadData();
         }
 
-        private void AddComponentsToWarehouseToolStripMenuItem_Click(object sender, EventArgs e)
+        private void addComponentsToolStripMenuItem_Click(object sender, EventArgs e)
         {
             var form = Container.Resolve<FormAddComponentsToWarehouse>();
             form.ShowDialog();
