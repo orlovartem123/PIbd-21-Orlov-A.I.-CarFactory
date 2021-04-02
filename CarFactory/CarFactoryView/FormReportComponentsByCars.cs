@@ -18,6 +18,7 @@ namespace CarFactoryView
             InitializeComponent();
             this.logic = logic;
         }
+
         private void FormReportProductComponents_Load(object sender, EventArgs e)
         {
             try
@@ -28,8 +29,8 @@ namespace CarFactoryView
                     dataGridView.Rows.Clear();
                     foreach (var elem in dict)
                     {
-                        dataGridView.Rows.Add(new object[] { elem.ComponentName, "", ""});
-                        foreach (var listElem in elem.Cars)
+                        dataGridView.Rows.Add(new object[] { elem.CarName, "", ""});
+                        foreach (var listElem in elem.Components)
                         {
                             dataGridView.Rows.Add(new object[] { "", listElem.Item1,listElem.Item2 });
                         }
@@ -44,6 +45,7 @@ namespace CarFactoryView
                MessageBoxIcon.Error);
             }
         }
+
         private void ButtonSaveToExcel_Click(object sender, EventArgs e)
         {
             using (var dialog = new SaveFileDialog { Filter = "xlsx|*.xlsx" })

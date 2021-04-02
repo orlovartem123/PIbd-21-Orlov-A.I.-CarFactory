@@ -59,9 +59,9 @@ namespace CarFactoryBusinessLogic.BusinessLogics
                     CellToName = "C1"
                 });
                 uint rowIndex = 2;
-                if (info.CarComponents != null)
+                if (info.Cars != null)
                 {
-                    foreach (var pc in info.CarComponents)
+                    foreach (var pc in info.Cars)
                     {
                         InsertCellInWorksheet(new ExcelCellParameters
                         {
@@ -69,12 +69,12 @@ namespace CarFactoryBusinessLogic.BusinessLogics
                             ShareStringPart = shareStringPart,
                             ColumnName = "A",
                             RowIndex = rowIndex,
-                            Text = pc.ComponentName,
+                            Text = pc.CarName,
                             StyleIndex = 0U
                         });
                         rowIndex++;
 
-                        foreach (var component in pc.Cars)
+                        foreach (var component in pc.Components)
                         {
                             InsertCellInWorksheet(new ExcelCellParameters
                             {

@@ -5,8 +5,8 @@ namespace CarFactoryBusinessLogic.ViewModels
 {
     public class ReportCarComponentViewModel
     {
-        public string ComponentName { get; set; }
+        public string CarName { get; set; }
         public int TotalCount { get; set; }
-        public List<Tuple<string, int>> Cars { get; set; }
+        public List<Tuple<string, int>> Components { get; set; }
     }
 }
