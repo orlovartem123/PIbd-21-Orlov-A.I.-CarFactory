@@ -6,14 +6,14 @@ using Unity;
 
 namespace CarFactoryView
 {
-    public partial class FormReportComponentsByCars : Form
+    public partial class FormReportCarsByComponents : Form
     {
         [Dependency]
         public new IUnityContainer Container { get; set; }
 
         private readonly ReportLogic logic;
 
-        public FormReportComponentsByCars(ReportLogic logic)
+        public FormReportCarsByComponents(ReportLogic logic)
         {
             InitializeComponent();
             this.logic = logic;

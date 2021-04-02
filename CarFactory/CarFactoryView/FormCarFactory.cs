@@ -141,9 +141,9 @@ namespace CarFactoryView
             }
         }
 
-        private void ComponentsByCarsToolStripMenuItem_Click(object sender, EventArgs e)
+        private void CarsByComponentsToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            var form = Container.Resolve<FormReportComponentsByCars>();
+            var form = Container.Resolve<FormReportCarsByComponents>();
             form.ShowDialog();
         }
 

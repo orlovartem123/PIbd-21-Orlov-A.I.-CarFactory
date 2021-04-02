@@ -250,11 +250,11 @@
     <Compile Include="FormComponent.Designer.cs">
       <DependentUpon>FormComponent.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormReportComponentsByCars.cs">
+    <Compile Include="FormReportCarsByComponents.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormReportComponentsByCars.Designer.cs">
-      <DependentUpon>FormReportComponentsByCars.cs</DependentUpon>
+    <Compile Include="FormReportCarsByComponents.Designer.cs">
+      <DependentUpon>FormReportCarsByComponents.cs</DependentUpon>
     </Compile>
     <Compile Include="FormCreateOrder.cs">
       <SubType>Form</SubType>
@@ -288,8 +288,8 @@
     <EmbeddedResource Include="FormComponents.resx">
       <DependentUpon>FormComponents.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FormReportComponentsByCars.resx">
-      <DependentUpon>FormReportComponentsByCars.cs</DependentUpon>
+    <EmbeddedResource Include="FormReportCarsByComponents.resx">
+      <DependentUpon>FormReportCarsByComponents.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormCreateOrder.resx">
       <DependentUpon>FormCreateOrder.cs</DependentUpon>
