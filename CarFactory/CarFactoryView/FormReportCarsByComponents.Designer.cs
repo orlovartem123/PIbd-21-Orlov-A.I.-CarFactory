@@ -1,6 +1,6 @@
 ﻿namespace CarFactoryView
 {
-    partial class FormReportComponentsByCars
+    partial class FormReportCarsByComponents
     {
         /// <summary>
         /// Required designer variable.
@@ -84,15 +84,15 @@
             this.buttonSaveToExcel.UseVisualStyleBackColor = true;
             this.buttonSaveToExcel.Click += new System.EventHandler(this.ButtonSaveToExcel_Click);
             // 
-            // FormReportComponentsByCars
+            // FormReportCarsByComponents
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(547, 625);
             this.Controls.Add(this.buttonSaveToExcel);
             this.Controls.Add(this.dataGridView);
-            this.Name = "FormReportComponentsByCars";
-            this.Text = "Components by cars";
+            this.Name = "FormReportCarsByComponents";
+            this.Text = "Cars by components";
             this.Load += new System.EventHandler(this.FormReportProductComponents_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).EndInit();
             this.ResumeLayout(false);

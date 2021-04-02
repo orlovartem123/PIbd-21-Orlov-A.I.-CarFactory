@@ -25,19 +25,19 @@ namespace CarFactoryBusinessLogic.BusinessLogics
             var components = _componentStorage.GetFullList();
             var cars = _carStorage.GetFullList();
             var list = new List<ReportCarComponentViewModel>();
-            foreach (var component in components)
+            foreach (var car in cars)
             {
                 var record = new ReportCarComponentViewModel
                 {
-                    ComponentName = component.ComponentName,
-                    Cars = new List<Tuple<string, int>>(),
+                    CarName = car.CarName,
+                    Components = new List<Tuple<string, int>>(),
                     TotalCount = 0
                 };
-                foreach (var car in cars)
+                foreach (var component in components)
                 {
                     if (car.CarComponents.ContainsKey(component.Id))
                     {
-                        record.Cars.Add(new Tuple<string, int>(car.CarName,
+                        record.Components.Add(new Tuple<string, int>(component.ComponentName,
                        car.CarComponents[component.Id].Item2));
                         record.TotalCount +=
                        car.CarComponents[component.Id].Item2;
@@ -87,7 +87,7 @@ namespace CarFactoryBusinessLogic.BusinessLogics
             {
                 FileName = model.FileName,
                 Title = "Components list",
-                CarComponents = GetCarComponent()
+                Cars = GetCarComponent()
             });
         }
 

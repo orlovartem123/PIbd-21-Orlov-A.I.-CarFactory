@@ -46,9 +46,9 @@
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).BeginInit();
             this.SuspendLayout();
-            // 
+            //
             // menuStrip1
-            // 
+            //
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.catalogsToolStripMenuItem,
             this.reportsToolStripMenuItem});
@@ -57,9 +57,9 @@
             this.menuStrip1.Size = new System.Drawing.Size(800, 24);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
-            // 
+            //
             // catalogsToolStripMenuItem
-            // 
+            //
             this.catalogsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.componentsToolStripMenuItem,
             this.carsToolStripMenuItem,
@@ -67,23 +67,23 @@
             this.catalogsToolStripMenuItem.Name = "catalogsToolStripMenuItem";
             this.catalogsToolStripMenuItem.Size = new System.Drawing.Size(65, 20);
             this.catalogsToolStripMenuItem.Text = "Catalogs";
-            // 
+            //
             // componentsToolStripMenuItem
-            // 
+            //
             this.componentsToolStripMenuItem.Name = "componentsToolStripMenuItem";
             this.componentsToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.componentsToolStripMenuItem.Text = "Components";
             this.componentsToolStripMenuItem.Click += new System.EventHandler(this.ComponentsToolStripMenuItem_Click);
-            // 
+            //
             // carsToolStripMenuItem
-            // 
+            //
             this.carsToolStripMenuItem.Name = "carsToolStripMenuItem";
             this.carsToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.carsToolStripMenuItem.Text = "Cars";
             this.carsToolStripMenuItem.Click += new System.EventHandler(this.CarsToolStripMenuItem_Click);
-            // 
+            //
             // reportsToolStripMenuItem
-            // 
+            //
             this.reportsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.componentsListToolStripMenuItem,
             this.componentsByCarsToolStripMenuItem,
@@ -91,30 +91,30 @@
             this.reportsToolStripMenuItem.Name = "reportsToolStripMenuItem";
             this.reportsToolStripMenuItem.Size = new System.Drawing.Size(59, 20);
             this.reportsToolStripMenuItem.Text = "Reports";
-            // 
+            //
             // componentsListToolStripMenuItem
-            // 
+            //
             this.componentsListToolStripMenuItem.Name = "componentsListToolStripMenuItem";
             this.componentsListToolStripMenuItem.Size = new System.Drawing.Size(183, 22);
             this.componentsListToolStripMenuItem.Text = "Cars list";
             this.componentsListToolStripMenuItem.Click += new System.EventHandler(this.CarsListToolStripMenuItem_Click);
-            // 
+            //
             // componentsByCarsToolStripMenuItem
-            // 
+            //
             this.componentsByCarsToolStripMenuItem.Name = "componentsByCarsToolStripMenuItem";
             this.componentsByCarsToolStripMenuItem.Size = new System.Drawing.Size(183, 22);
-            this.componentsByCarsToolStripMenuItem.Text = "Components by cars";
-            this.componentsByCarsToolStripMenuItem.Click += new System.EventHandler(this.ComponentsByCarsToolStripMenuItem_Click);
-            // 
+            this.componentsByCarsToolStripMenuItem.Text = "Cars by components";
+            this.componentsByCarsToolStripMenuItem.Click += new System.EventHandler(this.CarsByComponentsToolStripMenuItem_Click);
+            //
             // ordersListToolStripMenuItem
-            // 
+            //
             this.ordersListToolStripMenuItem.Name = "ordersListToolStripMenuItem";
             this.ordersListToolStripMenuItem.Size = new System.Drawing.Size(183, 22);
             this.ordersListToolStripMenuItem.Text = "Orders list";
             this.ordersListToolStripMenuItem.Click += new System.EventHandler(this.OrdersListToolStripMenuItem_Click);
-            // 
+            //
             // dataGridView
-            // 
+            //
             this.dataGridView.AllowUserToAddRows = false;
             this.dataGridView.AllowUserToDeleteRows = false;
             this.dataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
@@ -127,9 +127,9 @@
             this.dataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridView.Size = new System.Drawing.Size(612, 411);
             this.dataGridView.TabIndex = 1;
-            // 
+            //
             // buttonCreateOrder
-            // 
+            //
             this.buttonCreateOrder.Location = new System.Drawing.Point(642, 46);
             this.buttonCreateOrder.Name = "buttonCreateOrder";
             this.buttonCreateOrder.Size = new System.Drawing.Size(146, 23);
@@ -137,9 +137,9 @@
             this.buttonCreateOrder.Text = "Create order";
             this.buttonCreateOrder.UseVisualStyleBackColor = true;
             this.buttonCreateOrder.Click += new System.EventHandler(this.ButtonCreateOrder_Click);
-            // 
+            //
             // buttonOrderReady
-            // 
+            //
             this.buttonOrderReady.Location = new System.Drawing.Point(642, 125);
             this.buttonOrderReady.Name = "buttonOrderReady";
             this.buttonOrderReady.Size = new System.Drawing.Size(146, 23);
@@ -147,9 +147,9 @@
             this.buttonOrderReady.Text = "Order ready";
             this.buttonOrderReady.UseVisualStyleBackColor = true;
             this.buttonOrderReady.Click += new System.EventHandler(this.ButtonOrderReady_Click);
-            // 
+            //
             // buttonRef
-            // 
+            //
             this.buttonRef.Location = new System.Drawing.Point(642, 210);
             this.buttonRef.Name = "buttonRef";
             this.buttonRef.Size = new System.Drawing.Size(146, 23);
@@ -157,9 +157,9 @@
             this.buttonRef.Text = "Refresh list";
             this.buttonRef.UseVisualStyleBackColor = true;
             this.buttonRef.Click += new System.EventHandler(this.ButtonRef_Click);
-            // 
+            //
             // buttonTakeInWork
-            // 
+            //
             this.buttonTakeInWork.Location = new System.Drawing.Point(642, 84);
             this.buttonTakeInWork.Name = "buttonTakeInWork";
             this.buttonTakeInWork.Size = new System.Drawing.Size(146, 23);
@@ -167,9 +167,9 @@
             this.buttonTakeInWork.Text = "Give for execution";
             this.buttonTakeInWork.UseVisualStyleBackColor = true;
             this.buttonTakeInWork.Click += new System.EventHandler(this.ButtonTakeOrderInWork_Click);
-            // 
+            //
             // buttonPayOrder
-            // 
+            //
             this.buttonPayOrder.Location = new System.Drawing.Point(642, 167);
             this.buttonPayOrder.Name = "buttonPayOrder";
             this.buttonPayOrder.Size = new System.Drawing.Size(146, 23);
@@ -177,16 +177,16 @@
             this.buttonPayOrder.Text = "Order paid";
             this.buttonPayOrder.UseVisualStyleBackColor = true;
             this.buttonPayOrder.Click += new System.EventHandler(this.ButtonPayOrder_Click);
-            // 
+            //
             // clientsToolStripMenuItem
-            // 
+            //
             this.clientsToolStripMenuItem.Name = "clientsToolStripMenuItem";
             this.clientsToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.clientsToolStripMenuItem.Text = "Clients";
             this.clientsToolStripMenuItem.Click += new System.EventHandler(this.clientsToolStripMenuItem_Click);
-            // 
+            //
             // FormCarFactory
-            // 
+            //
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
