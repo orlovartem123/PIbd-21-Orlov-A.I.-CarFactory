@@ -5,7 +5,6 @@ using CarFactoryListImplement.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 
 namespace CarFactoryListImplement.Implements
 {
@@ -159,26 +158,5 @@ namespace CarFactoryListImplement.Implements
                 WarehouseComponents = warehouseComponents
             };
         }
-
-        //public void Print()
-        //{
-        //    foreach (Warehouse storehouse in source.Warehouses)
-        //    {
-        //        Console.WriteLine(storehouse.WarehouseName + " " + storehouse.ManagerFullName + " " + storehouse.DateCreate);
-        //        foreach (KeyValuePair<int, int> keyValue in storehouse.WarehouseComponents)
-        //        {
-        //            string componentName = null;
-        //            foreach (var component in source.Components)
-        //            {
-        //                if (component.Id == keyValue.Key)
-        //                {
-        //                    componentName = component.ComponentName;
-        //                    break;
-        //                }
-        //            }
-        //            Console.WriteLine(componentName + " " + keyValue.Value);
-        //        }
-        //    }
-        //}
     }
 }

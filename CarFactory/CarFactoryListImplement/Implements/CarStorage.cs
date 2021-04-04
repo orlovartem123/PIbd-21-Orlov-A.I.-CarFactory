@@ -5,11 +5,10 @@ using CarFactoryListImplement.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 
 namespace CarFactoryListImplement.Implements
 {
-	public class CarStorage : ICarStorage
+    public class CarStorage : ICarStorage
 	{
 		private readonly DataListSingleton source;
 

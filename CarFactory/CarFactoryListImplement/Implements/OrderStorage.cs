@@ -4,7 +4,6 @@ using CarFactoryBusinessLogic.ViewModels;
 using CarFactoryListImplement.Models;
 using System;
 using System.Collections.Generic;
-using System.Text;
 
 namespace CarFactoryListImplement.Implements
 {
@@ -19,8 +18,6 @@ namespace CarFactoryListImplement.Implements
 
         public void Delete(OrderBindingModel model)
         {
-            //source.Orders.Remove(o=>o.Id==model.Id);
-
             for (int i = 0; i < source.Orders.Count; ++i)
             {
                 if (source.Orders[i].Id == model.Id)
