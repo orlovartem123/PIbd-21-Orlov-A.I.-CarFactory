@@ -13,24 +13,6 @@ namespace CarFactoryView
         [Dependency]
         public new IUnityContainer Container { get; set; }
 
-        public int ComponentId
-        {
-            get { return Convert.ToInt32(comboBoxComponent.SelectedValue); }
-            set { comboBoxComponent.SelectedValue = value; }
-        }
-
-        public int Warehouse
-        {
-            get { return Convert.ToInt32(comboBoxWarehouse.SelectedValue); }
-            set { comboBoxWarehouse.SelectedValue = value; }
-        }
-
-        public int Count
-        {
-            get { return Convert.ToInt32(textBoxCount.Text); }
-            set { textBoxCount.Text = value.ToString(); }
-        }
-
         private readonly WarehouseLogic storeHouseLogic;
 
         public FormAddComponentsToWarehouse(ComponentLogic logicComponent, WarehouseLogic logicWarehouse)
