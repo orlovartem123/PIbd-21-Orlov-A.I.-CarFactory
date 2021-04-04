@@ -1,11 +1,9 @@
 ﻿using CarFactoryBusinessLogic.Enums;
 using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace CarFactoryFileImplement.Models
 {
-	public class Order
+    public class Order
 	{
         public int Id { get; set; }
         public int CarId { get; set; }

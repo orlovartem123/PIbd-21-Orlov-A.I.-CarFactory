@@ -1,7 +1,5 @@
 ﻿using CarFactoryBusinessLogic.Enums;
 using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace CarFactoryBusinessLogic.BindingModels
 {
@@ -20,5 +18,9 @@ namespace CarFactoryBusinessLogic.BindingModels
         public DateTime DateCreate { get; set; }
 
         public DateTime? DateImplement { get; set; }
+
+        public DateTime? DateFrom { get; set; }
+
+        public DateTime? DateTo { get; set; }
     }
 }
