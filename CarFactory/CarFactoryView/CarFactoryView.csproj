@@ -122,7 +122,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FormCar.resx">
       <DependentUpon>FormCar.cs</DependentUpon>
-      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="FormCarComponent.resx">
       <DependentUpon>FormCarComponent.cs</DependentUpon>
@@ -175,6 +174,10 @@
     <ProjectReference Include="..\CarFactoryBuisinessLogic\CarFactoryBusinessLogic.csproj">
       <Project>{0d8bdae1-fe2d-4cc5-9d43-bb4274f8f587}</Project>
       <Name>CarFactoryBusinessLogic</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CarFactoryFileImplement\CarFactoryFileImplement.csproj">
+      <Project>{40fa0bf9-bb8a-4489-a7d7-1028279797e9}</Project>
+      <Name>CarFactoryFileImplement</Name>
     </ProjectReference>
     <ProjectReference Include="..\CarFactoryListImplement\CarFactoryListImplement.csproj">
       <Project>{6f2f22d6-c598-4358-950d-32b3f45c4456}</Project>
