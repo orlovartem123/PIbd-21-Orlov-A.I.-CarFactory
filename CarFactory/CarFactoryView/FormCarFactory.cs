@@ -1,13 +1,6 @@
 ﻿using CarFactoryBusinessLogic.BindingModels;
 using CarFactoryBusinessLogic.BusinessLogics;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using Unity;
 
@@ -24,11 +17,6 @@ namespace CarFactoryView
         {
             InitializeComponent();
             this._orderLogic = orderLogic;
-            dataGridView.DataSource = _orderLogic.Read(null);
-            dataGridView.AutoResizeColumns();
-            dataGridView.Columns["Id"].Visible = false;
-            dataGridView.Columns["CarId"].Visible = false;
-
         }
 
         private void FormMain_Load(object sender, EventArgs e)
@@ -41,6 +29,8 @@ namespace CarFactoryView
             try
             {
                 dataGridView.DataSource = _orderLogic.Read(null);
+                dataGridView.Columns["Id"].Visible = false;
+                dataGridView.Columns["CarId"].Visible = false;
             }
             catch (Exception ex)
             {
@@ -58,6 +48,12 @@ namespace CarFactoryView
         private void CarsToolStripMenuItem_Click(object sender, EventArgs e)
         {
             var form = Container.Resolve<FormCars>();
+            form.ShowDialog();
+        }
+
+        private void WarehousesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var form = Container.Resolve<FormWarehouses>();
             form.ShowDialog();
         }
 
@@ -130,6 +126,12 @@ namespace CarFactoryView
         private void ButtonRef_Click(object sender, EventArgs e)
         {
             LoadData();
+        }
+
+        private void addComponentsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var form = Container.Resolve<FormAddComponentsToWarehouse>();
+            form.ShowDialog();
         }
     }
 }

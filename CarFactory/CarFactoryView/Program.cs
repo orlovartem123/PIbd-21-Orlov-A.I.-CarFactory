@@ -2,9 +2,6 @@
 using CarFactoryBusinessLogic.Interfaces;
 using CarFactoryListImplement.Implements;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using Unity;
 using Unity.Lifetime;
@@ -34,10 +31,14 @@ namespace CarFactoryView
            HierarchicalLifetimeManager());
             currentContainer.RegisterType<ICarStorage, CarStorage>(new
            HierarchicalLifetimeManager());
+            currentContainer.RegisterType<IWarehouseStorage, WarehouseStorage>(new
+           HierarchicalLifetimeManager());
             currentContainer.RegisterType<ComponentLogic>(new
            HierarchicalLifetimeManager());
             currentContainer.RegisterType<OrderLogic>(new HierarchicalLifetimeManager());
             currentContainer.RegisterType<CarLogic>(new
+           HierarchicalLifetimeManager());
+            currentContainer.RegisterType<WarehouseLogic>(new
            HierarchicalLifetimeManager());
             return currentContainer;
         }

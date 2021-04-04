@@ -6,7 +6,7 @@ using Unity;
 
 namespace CarFactoryView
 {
-	public partial class FormComponent : Form
+    public partial class FormComponent : Form
 	{
 
 		[Dependency]
@@ -73,6 +73,7 @@ namespace CarFactoryView
 			DialogResult = DialogResult.Cancel;
 			Close();
 		}
+
 	}
 }
 
