@@ -1,4 +1,5 @@
 ﻿using CarFactoryBusinessLogic.BindingModels;
+using CarFactoryBusinessLogic.Enums;
 using CarFactoryBusinessLogic.Interfaces;
 using CarFactoryBusinessLogic.ViewModels;
 using CarFactoryFileImplement.Models;
@@ -47,11 +48,13 @@ namespace CarFactoryFileImplement.Implements
             {
                 return null;
             }
-            return source.Orders.Where(rec => (!model.DateFrom.HasValue &&
-                !model.DateTo.HasValue && rec.DateCreate.Date == model.DateCreate.Date) ||
-                (model.DateFrom.HasValue && model.DateTo.HasValue && rec.DateCreate.Date >=
-                model.DateFrom.Value.Date && rec.DateCreate.Date <= model.DateTo.Value.Date) ||
-                (model.ClientId.HasValue && rec.ClientId == model.ClientId)).Select(CreateModel).ToList();
+            return source.Orders
+                .Where(rec => (!model.DateFrom.HasValue && !model.DateTo.HasValue && rec.DateCreate.Date == model.DateCreate.Date) ||
+                (model.DateFrom.HasValue && model.DateTo.HasValue && rec.DateCreate.Date >= model.DateFrom.Value.Date && rec.DateCreate.Date <= model.DateTo.Value.Date) ||
+                (model.ClientId.HasValue && rec.ClientId == model.ClientId) ||
+                (model.FreeOrders.HasValue && model.FreeOrders.Value && rec.Status == OrderStatus.Accepted) ||
+                (model.ImplementerId.HasValue && rec.ImplementerId == model.ImplementerId && rec.Status == OrderStatus.Running))
+                .Select(CreateModel).ToList();
         }
 
         public List<OrderViewModel> GetFullList()
@@ -88,6 +91,7 @@ namespace CarFactoryFileImplement.Implements
         {
             order.CarId = model.CarId;
             order.ClientId = Convert.ToInt32(model.ClientId);
+            order.ImplementerId = model.ImplementerId;
             order.Count = model.Count;
             order.Status = model.Status;
             order.Sum = model.Sum;
@@ -103,8 +107,10 @@ namespace CarFactoryFileImplement.Implements
                 Id = order.Id,
                 CarId = order.CarId,
                 ClientId = order.ClientId,
+                ImplementerId=order.ImplementerId,
                 ClientFIO = source.Clients.FirstOrDefault(client => client.Id == order.ClientId)?.ClientFIO,
                 CarName = source.Cars.FirstOrDefault(car => car.Id == order.CarId)?.CarName,
+                ImplementerFIO=source.Implementers.FirstOrDefault(implementer=>implementer.Id==order.ImplementerId)?.ImplementerFIO,
                 Count = order.Count,
                 Sum = order.Sum,
                 Status = order.Status,

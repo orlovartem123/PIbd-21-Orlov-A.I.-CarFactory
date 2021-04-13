@@ -18,12 +18,19 @@ namespace CarFactoryBusinessLogic.ViewModels
         public int CarId { get; set; }
 
         [DataMember]
+        public int? ImplementerId { get; set; }
+
+        [DataMember]
         [DisplayName("Client")]
         public string ClientFIO { get; set; }
 
         [DataMember]
         [DisplayName("Car")]
         public string CarName { get; set; }
+
+        [DataMember]
+        [DisplayName("Implementer")]
+        public string ImplementerFIO { get; set; }
 
         [DataMember]
         [DisplayName("Quantity")]

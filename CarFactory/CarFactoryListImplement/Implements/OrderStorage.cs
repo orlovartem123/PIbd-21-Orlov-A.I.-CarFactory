@@ -1,4 +1,5 @@
 ﻿using CarFactoryBusinessLogic.BindingModels;
+using CarFactoryBusinessLogic.Enums;
 using CarFactoryBusinessLogic.Interfaces;
 using CarFactoryBusinessLogic.ViewModels;
 using CarFactoryListImplement.Models;
@@ -55,7 +56,11 @@ namespace CarFactoryListImplement.Implements
             List<OrderViewModel> result = new List<OrderViewModel>();
             foreach (var order in source.Orders)
             {
-                if (order.DateCreate.Equals(model.DateCreate))
+                if ((!model.DateFrom.HasValue && !model.DateTo.HasValue && order.DateCreate.Date == model.DateCreate.Date) ||
+                (model.DateFrom.HasValue && model.DateTo.HasValue && order.DateCreate.Date >= model.DateFrom.Value.Date && order.DateCreate.Date <= model.DateTo.Value.Date) ||
+                (model.ClientId.HasValue && order.ClientId == model.ClientId) ||
+                (model.FreeOrders.HasValue && model.FreeOrders.Value && order.Status == OrderStatus.Accepted) ||
+                (model.ImplementerId.HasValue && order.ImplementerId == model.ImplementerId && order.Status == OrderStatus.Running))
                 {
                     result.Add(CreateModel(order));
                 }
@@ -110,6 +115,8 @@ namespace CarFactoryListImplement.Implements
         {
             order.CarId = model.CarId;
             order.Count = model.Count;
+            order.ClientId = (int)model.ClientId;
+            order.ImplementerId = model.ImplementerId;
             order.Status = model.Status;
             order.Sum = model.Sum;
             order.DateCreate = model.DateCreate;
@@ -119,11 +126,42 @@ namespace CarFactoryListImplement.Implements
 
         private OrderViewModel CreateModel(Order order)
         {
+            var CarName = "";
+            var ClientName = "";
+            var ImplementerFIO = "";
+            foreach (var car in source.Cars)
+            {
+                if (car.Id == order.CarId)
+                {
+                    CarName = car.CarName;
+                    break;
+                }
+            }
+            foreach (var client in source.Clients)
+            {
+                if (client.Id == order.ClientId)
+                {
+                    ClientName = client.ClientFIO;
+                    break;
+                }
+            }
+            foreach (var implementer in source.Implementers)
+            {
+                if (implementer.Id == order.ImplementerId)
+                {
+                    ImplementerFIO = implementer.ImplementerFIO;
+                    break;
+                }
+            }
             return new OrderViewModel
             {
                 Id = order.Id,
                 CarId = order.CarId,
-                CarName = source.Cars.FirstOrDefault(car => car.Id == order.CarId).CarName,
+                ClientId=order.ClientId,
+                ImplementerId=order.ImplementerId,
+                CarName = CarName,
+                ClientFIO=ClientName,
+                ImplementerFIO=ImplementerFIO,
                 Count = order.Count,
                 Sum = order.Sum,
                 Status = order.Status,
