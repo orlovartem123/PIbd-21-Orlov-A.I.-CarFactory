@@ -99,6 +99,7 @@ namespace CarFactoryView
                     Id = id,
                     WarehouseName = textBoxName.Text,
                     ManagerFullName = textBoxManagerName.Text,
+                    DateCreate = DateTime.Now,
                     WarehouseComponents = warehouseComponents
                 });
                 MessageBox.Show("Saved", "Message",

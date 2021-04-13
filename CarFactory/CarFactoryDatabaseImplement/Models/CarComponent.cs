@@ -1,11 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Text;
+﻿using System.ComponentModel.DataAnnotations;
 
 namespace CarFactoryDatabaseImplement.Models
 {
-	public class CarComponent
+    public class CarComponent
 	{
 
 		public int Id { get; set; }
