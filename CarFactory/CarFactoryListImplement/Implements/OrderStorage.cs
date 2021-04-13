@@ -4,8 +4,6 @@ using CarFactoryBusinessLogic.ViewModels;
 using CarFactoryListImplement.Models;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 
 namespace CarFactoryListImplement.Implements
 {
@@ -122,11 +120,20 @@ namespace CarFactoryListImplement.Implements
 
         private OrderViewModel CreateModel(Order order)
         {
+            var carName = "";
+            foreach (var car in source.Cars)
+            {
+                if (car.Id==order.CarId)
+                {
+                    carName = car.CarName;
+                    break;
+                }
+            }
             return new OrderViewModel
             {
                 Id = order.Id,
                 CarId = order.CarId,
-                CarName = source.Cars.FirstOrDefault(car => car.Id == order.CarId).CarName,
+                CarName = carName,
                 Count = order.Count,
                 Sum = order.Sum,
                 Status = order.Status,

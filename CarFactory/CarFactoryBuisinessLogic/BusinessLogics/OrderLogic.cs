@@ -1,21 +1,23 @@
-﻿
-using CarFactoryBusinessLogic.BindingModels;
+﻿using CarFactoryBusinessLogic.BindingModels;
 using CarFactoryBusinessLogic.Enums;
 using CarFactoryBusinessLogic.Interfaces;
 using CarFactoryBusinessLogic.ViewModels;
 using System;
 using System.Collections.Generic;
-using System.Text;
 
 namespace CarFactoryBusinessLogic.BusinessLogics
 {
     public class OrderLogic
     {
         private readonly IOrderStorage _orderStorage;
+        private readonly IWarehouseStorage _warehouseStorage;
+        private readonly ICarStorage _carStorage;
 
-        public OrderLogic(IOrderStorage orderStorage)
+        public OrderLogic(IOrderStorage orderStorage, IWarehouseStorage warehouseStorage, ICarStorage carStorage)
         {
             _orderStorage = orderStorage;
+            _warehouseStorage = warehouseStorage;
+            _carStorage = carStorage;
         }
 
         public List<OrderViewModel> Read(OrderBindingModel model)
@@ -53,6 +55,11 @@ namespace CarFactoryBusinessLogic.BusinessLogics
             if (order.Status != OrderStatus.Accepted)
             {
                 throw new Exception("Order isn't in the status \"Accepted\"");
+            }
+            var car = _carStorage.GetElement(new CarBindingModel { Id = order.CarId });
+            if (!_warehouseStorage.CheckComponentsCount(order.Count,car.CarComponents))
+            {
+                throw new Exception("Not enough components in warehouse");
             }
             _orderStorage.Update(new OrderBindingModel
             {
