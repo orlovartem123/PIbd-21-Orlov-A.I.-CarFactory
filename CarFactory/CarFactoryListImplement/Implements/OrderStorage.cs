@@ -4,7 +4,6 @@ using CarFactoryBusinessLogic.ViewModels;
 using CarFactoryListImplement.Models;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 
 namespace CarFactoryListImplement.Implements
 {
@@ -19,8 +18,6 @@ namespace CarFactoryListImplement.Implements
 
         public void Delete(OrderBindingModel model)
         {
-            //source.Orders.Remove(o=>o.Id==model.Id);
-
             for (int i = 0; i < source.Orders.Count; ++i)
             {
                 if (source.Orders[i].Id == model.Id)
@@ -121,11 +118,20 @@ namespace CarFactoryListImplement.Implements
 
         private OrderViewModel CreateModel(Order order)
         {
+            var carName = "";
+            foreach (var car in source.Cars)
+            {
+                if (car.Id==order.CarId)
+                {
+                    carName = car.CarName;
+                    break;
+                }
+            }
             return new OrderViewModel
             {
                 Id = order.Id,
                 CarId = order.CarId,
-                CarName = source.Cars.FirstOrDefault(car => car.Id == order.CarId).CarName,
+                CarName = carName,
                 Count = order.Count,
                 Sum = order.Sum,
                 Status = order.Status,

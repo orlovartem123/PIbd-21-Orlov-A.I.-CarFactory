@@ -31,10 +31,14 @@ namespace CarFactoryView
            HierarchicalLifetimeManager());
             currentContainer.RegisterType<ICarStorage, CarStorage>(new
            HierarchicalLifetimeManager());
+            currentContainer.RegisterType<IWarehouseStorage, WarehouseStorage>(new
+           HierarchicalLifetimeManager());
             currentContainer.RegisterType<ComponentLogic>(new
            HierarchicalLifetimeManager());
             currentContainer.RegisterType<OrderLogic>(new HierarchicalLifetimeManager());
             currentContainer.RegisterType<CarLogic>(new
+           HierarchicalLifetimeManager());
+            currentContainer.RegisterType<WarehouseLogic>(new
            HierarchicalLifetimeManager());
             return currentContainer;
         }

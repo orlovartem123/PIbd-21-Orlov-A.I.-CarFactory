@@ -2,7 +2,6 @@
 using CarFactoryBusinessLogic.Interfaces;
 using CarFactoryBusinessLogic.ViewModels;
 using CarFactoryDatabaseImplement.Models;
-using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,92 +9,61 @@ using System.Linq;
 namespace CarFactoryDatabaseImplement.Implements
 {
     public class OrderStorage : IOrderStorage
-    {
-        public void Delete(OrderBindingModel model)
-        {
-            using (var context = new CarFactoryDbContext())
-            {
-                Order element = context.Orders.FirstOrDefault(rec => rec.Id == model.Id);
-                if (element != null)
-                {
-                    context.Orders.Remove(element);
-                    context.SaveChanges();
-                }
-                else
-                {
-                    throw new Exception("Element not found");
-                }
-            }
-        }
+	{
+		public void Delete(OrderBindingModel model)
+		{
+			using (var context = new CarFactoryDbContext())
+			{
+				Order element = context.Orders.FirstOrDefault(rec => rec.Id == model.Id);
+				if (element != null)
+				{
+					context.Orders.Remove(element);
+					context.SaveChanges();
+				}
+				else
+				{
+					throw new Exception("Element not found");
+				}
+			}
+		}
 
-        public OrderViewModel GetElement(OrderBindingModel model)
-        {
-            if (model == null)
-            {
-                return null;
-            }
-            using (var context = new CarFactoryDbContext())
-            {
-                var order = context.Orders.Include(rec => rec.Car)
-                .FirstOrDefault(rec => rec.Id == model.Id || rec.Id == model.Id);
-                return order != null ?
-                new OrderViewModel
-                {
-                    Id = order.Id,
-                    CarId = order.CarId,
-                    CarName = order.Car.CarName,
-                    Count = order.Count,
-                    Sum = order.Sum,
-                    Status = order.Status,
-                    DateCreate = order.DateCreate,
-                    DateImplement = order?.DateImplement
-                } : null;
-            }
-        }
+		public OrderViewModel GetElement(OrderBindingModel model)
+		{
+			if (model == null)
+			{
+				return null;
+			}
+			using (var context = new CarFactoryDbContext())
+			{
+				var order = context.Orders
+				.FirstOrDefault(rec => rec.Id == model.Id || rec.Id == model.Id);
+				return order != null ?
+				CreateModel(order) : null;
+			}
+		}
 
-        public List<OrderViewModel> GetFilteredList(OrderBindingModel model)
-        {
-            if (model == null)
-            {
-                return null;
-            }
-            using (var context = new CarFactoryDbContext())
-            {
-                return context.Orders
-                    .Where(rec => rec.CarId == model.CarId || (rec.DateCreate >= model.DateFrom && rec.DateCreate <= model.DateTo))
-                    .Include(rec => rec.Car)
-                    .Select(rec => new OrderViewModel
-                    {
-                        Id = rec.Id,
-                        CarName = rec.Car.CarName,
-                        CarId = rec.CarId,
-                        Count = rec.Count,
-                        Sum = rec.Sum,
-                        Status = rec.Status,
-                        DateCreate = rec.DateCreate,
-                        DateImplement = rec.DateImplement
-                    }).ToList();
-            }
-        }
+		public List<OrderViewModel> GetFilteredList(OrderBindingModel model)
+		{
+			if (model == null)
+			{
+				return null;
+			}
+			using (var context = new CarFactoryDbContext())
+			{
+				return context.Orders
+				.Where(rec => rec.Id == model.Id)
+				.Select(CreateModel).ToList();
+			}
+		}
 
-        public List<OrderViewModel> GetFullList()
-        {
-            using (var context = new CarFactoryDbContext())
-            {
-                return context.Orders.Include(rec => rec.Car)
-                .Select(rec => new OrderViewModel
-                {
-                    Id = rec.Id,
-                    CarId = rec.CarId,
-                    CarName = rec.Car.CarName,
-                    Count = rec.Count,
-                    Sum = rec.Sum,
-                    Status = rec.Status,
-                    DateCreate = rec.DateCreate,
-                    DateImplement = rec.DateImplement
-                }).ToList();
-            }
-        }
+		public List<OrderViewModel> GetFullList()
+		{
+			using (var context = new CarFactoryDbContext())
+			{
+				return context.Orders
+				.Select(CreateModel).ToList();
+			}
+		}
 
         public void Insert(OrderBindingModel model)
         {

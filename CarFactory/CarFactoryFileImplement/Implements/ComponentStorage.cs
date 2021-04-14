@@ -86,6 +86,5 @@ namespace CarFactoryFileImplement.Implements
                 ComponentName = component.ComponentName
             };
         }
-
     }
 }
