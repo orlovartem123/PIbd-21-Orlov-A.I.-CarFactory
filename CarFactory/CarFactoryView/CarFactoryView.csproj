@@ -238,6 +238,12 @@
     <Compile Include="FormCars.Designer.cs">
       <DependentUpon>FormCars.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormReportComponentsByWarehouses.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormReportComponentsByWarehouses.Designer.cs">
+      <DependentUpon>FormReportComponentsByWarehouses.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormReportOrders.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -267,6 +273,12 @@
     </Compile>
     <Compile Include="FormCreateOrder.Designer.cs">
       <DependentUpon>FormCreateOrder.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormReportOrdersByDates.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormReportOrdersByDates.Designer.cs">
+      <DependentUpon>FormReportOrdersByDates.cs</DependentUpon>
     </Compile>
     <Compile Include="FormWarehouse.cs">
       <SubType>Form</SubType>
@@ -300,6 +312,9 @@
     <EmbeddedResource Include="FormCars.resx">
       <DependentUpon>FormCars.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FormReportComponentsByWarehouses.resx">
+      <DependentUpon>FormReportComponentsByWarehouses.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FormReportOrders.resx">
       <DependentUpon>FormReportOrders.cs</DependentUpon>
     </EmbeddedResource>
@@ -314,6 +329,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FormCreateOrder.resx">
       <DependentUpon>FormCreateOrder.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormReportOrdersByDates.resx">
+      <DependentUpon>FormReportOrdersByDates.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormWarehouse.resx">
       <DependentUpon>FormWarehouse.cs</DependentUpon>
@@ -331,7 +349,9 @@
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
     <EmbeddedResource Include="Report.rdlc" />
+    <EmbeddedResource Include="ReportOrdersByDates.rdlc" />
     <None Include="packages.config" />
+    <None Include="Properties\DataSources\CarFactoryBusinessLogic.ViewModels.ReportOrderByDatesViewModel.datasource" />
     <None Include="Properties\DataSources\CarFactoryBusinessLogic.ViewModels.ReportOrdersViewModel.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

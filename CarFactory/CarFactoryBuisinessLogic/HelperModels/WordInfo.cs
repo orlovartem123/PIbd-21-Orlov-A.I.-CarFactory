@@ -10,5 +10,7 @@ namespace CarFactoryBusinessLogic.HelperModels
         public string Title { get; set; }
 
         public List<CarViewModel> Cars { get; set; }
+
+        public List<WarehouseViewModel> Warehouses { get; set; }
     }
 }

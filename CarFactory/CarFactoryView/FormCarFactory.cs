@@ -164,5 +164,33 @@ namespace CarFactoryView
             var form = Container.Resolve<FormAddComponentsToWarehouse>();
             form.ShowDialog();
         }
+
+        private void warehousesListToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            using (var dialog = new SaveFileDialog { Filter = "docx|*.docx" })
+            {
+                if (dialog.ShowDialog() == DialogResult.OK)
+                {
+                    report.SaveWarehousesToWordFile(new ReportBindingModel
+                    {
+                        FileName = dialog.FileName
+                    });
+                    MessageBox.Show("Done", "Success", MessageBoxButtons.OK,
+                    MessageBoxIcon.Information);
+                }
+            }
+        }
+
+        private void componentsByWarehousesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var form = Container.Resolve<FormReportComponentsByWarehouses>();
+            form.ShowDialog();
+        }
+
+        private void ordersByDatesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var form = Container.Resolve<FormReportOrdersByDates>();
+            form.ShowDialog();
+        }
     }
 }

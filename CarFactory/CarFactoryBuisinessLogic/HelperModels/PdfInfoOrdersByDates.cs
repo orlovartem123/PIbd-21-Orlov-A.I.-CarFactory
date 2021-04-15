@@ -3,11 +3,12 @@ using System.Collections.Generic;
 
 namespace CarFactoryBusinessLogic.HelperModels
 {
-    public class ExcelInfo
+    public class PdfInfoOrdersByDates
     {
         public string FileName { get; set; }
+
         public string Title { get; set; }
-        public List<ReportCarComponentViewModel> Cars { get; set; }
-        public List<ReportWarehouseComponentViewModel> Warehouses { get; set; }
+
+        public List<ReportOrderByDatesViewModel> Orders { get; set; }
     }
 }
