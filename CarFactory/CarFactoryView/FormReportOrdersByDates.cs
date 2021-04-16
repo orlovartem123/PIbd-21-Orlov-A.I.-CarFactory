@@ -22,18 +22,7 @@ namespace CarFactoryView
 
         private void FormClientOrders_Load(object sender, EventArgs e)
         {
-            try
-            {
-                var dataSource = logic.GetOrdersByDates();
-                ReportDataSource source = new ReportDataSource("DataSetOrdersByDates", dataSource);
-                reportViewer.LocalReport.DataSources.Add(source);
-                reportViewer.RefreshReport();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK,
-               MessageBoxIcon.Error);
-            }
+            reportViewer.RefreshReport();
         }
 
         [Obsolete]
@@ -57,6 +46,22 @@ namespace CarFactoryView
                         MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }
+            }
+        }
+
+        private void buttonCreate_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                var dataSource = logic.GetOrdersByDates();
+                ReportDataSource source = new ReportDataSource("DataSetOrdersByDates", dataSource);
+                reportViewer.LocalReport.DataSources.Add(source);
+                reportViewer.RefreshReport();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK,
+               MessageBoxIcon.Error);
             }
         }
     }

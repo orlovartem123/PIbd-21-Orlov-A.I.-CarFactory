@@ -142,7 +142,7 @@
                           <Style />
                         </Paragraph>
                       </Paragraphs>
-                      <rd:DefaultName>DateCreate1</rd:DefaultName>
+                      <rd:DefaultName>DateCreate</rd:DefaultName>
                       <Style>
                         <Border>
                           <Color>LightGrey</Color>
@@ -166,13 +166,15 @@
                           <TextRuns>
                             <TextRun>
                               <Value>=Fields!OrdersCount.Value</Value>
-                              <Style />
+                              <Style>
+                                <Format>0;(0)</Format>
+                              </Style>
                             </TextRun>
                           </TextRuns>
                           <Style />
                         </Paragraph>
                       </Paragraphs>
-                      <rd:DefaultName>OrdersCount1</rd:DefaultName>
+                      <rd:DefaultName>OrdersCount</rd:DefaultName>
                       <Style>
                         <Border>
                           <Color>LightGrey</Color>
@@ -196,13 +198,15 @@
                           <TextRuns>
                             <TextRun>
                               <Value>=Fields!TotalSum.Value</Value>
-                              <Style />
+                              <Style>
+                                <Format>0.00;(0.00)</Format>
+                              </Style>
                             </TextRun>
                           </TextRuns>
                           <Style />
                         </Paragraph>
                       </Paragraphs>
-                      <rd:DefaultName>TotalSum1</rd:DefaultName>
+                      <rd:DefaultName>TotalSum</rd:DefaultName>
                       <Style>
                         <Border>
                           <Color>LightGrey</Color>
@@ -241,7 +245,7 @@
         <Top>2.16641cm</Top>
         <Left>0.31432cm</Left>
         <Height>2.57583cm</Height>
-        <Width>22.71354cm</Width>
+        <Width>22.71355cm</Width>
         <Style>
           <Border>
             <Style>None</Style>

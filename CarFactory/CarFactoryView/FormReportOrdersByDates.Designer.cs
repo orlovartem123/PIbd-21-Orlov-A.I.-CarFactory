@@ -28,23 +28,26 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
-            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource1 = new Microsoft.Reporting.WinForms.ReportDataSource();
-            this.ReportOrderByDatesViewModelBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.buttonCreate = new System.Windows.Forms.Button();
             this.buttonToPdf = new System.Windows.Forms.Button();
             this.reportViewer = new Microsoft.Reporting.WinForms.ReportViewer();
-            ((System.ComponentModel.ISupportInitialize)(this.ReportOrderByDatesViewModelBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
-            // ReportOrderByDatesViewModelBindingSource
+            // buttonCreate
             // 
-            this.ReportOrderByDatesViewModelBindingSource.DataSource = typeof(CarFactoryBusinessLogic.ViewModels.ReportOrderByDatesViewModel);
+            this.buttonCreate.Location = new System.Drawing.Point(468, 8);
+            this.buttonCreate.Name = "buttonCreate";
+            this.buttonCreate.Size = new System.Drawing.Size(107, 23);
+            this.buttonCreate.TabIndex = 4;
+            this.buttonCreate.Text = "Create";
+            this.buttonCreate.UseVisualStyleBackColor = true;
+            this.buttonCreate.Click += new System.EventHandler(this.buttonCreate_Click);
             // 
             // buttonToPdf
             // 
             this.buttonToPdf.Location = new System.Drawing.Point(994, 8);
             this.buttonToPdf.Name = "buttonToPdf";
-            this.buttonToPdf.Size = new System.Drawing.Size(180, 43);
+            this.buttonToPdf.Size = new System.Drawing.Size(107, 23);
             this.buttonToPdf.TabIndex = 5;
             this.buttonToPdf.Text = "To Pdf";
             this.buttonToPdf.UseVisualStyleBackColor = true;
@@ -52,35 +55,33 @@
             // 
             // reportViewer
             // 
-            this.reportViewer.Dock = System.Windows.Forms.DockStyle.Left;
-            reportDataSource1.Name = "DataSetOrdersByDates";
-            reportDataSource1.Value = this.ReportOrderByDatesViewModelBindingSource;
-            this.reportViewer.LocalReport.DataSources.Add(reportDataSource1);
+            this.reportViewer.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.reportViewer.LocalReport.ReportEmbeddedResource = "CarFactoryView.ReportOrdersByDates.rdlc";
-            this.reportViewer.Location = new System.Drawing.Point(0, 0);
+            this.reportViewer.Location = new System.Drawing.Point(0, 38);
             this.reportViewer.Name = "reportViewer";
             this.reportViewer.ServerReport.BearerToken = null;
-            this.reportViewer.Size = new System.Drawing.Size(988, 567);
+            this.reportViewer.Size = new System.Drawing.Size(1113, 529);
             this.reportViewer.TabIndex = 6;
             // 
-            // FormReportOrdersByDates
+            // FormReportOrders
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1179, 567);
+            this.ClientSize = new System.Drawing.Size(1113, 567);
             this.Controls.Add(this.reportViewer);
             this.Controls.Add(this.buttonToPdf);
+            this.Controls.Add(this.buttonCreate);
             this.Name = "FormReportOrdersByDates";
             this.Text = "Client Order";
             this.Load += new System.EventHandler(this.FormClientOrders_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.ReportOrderByDatesViewModelBindingSource)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
         #endregion
+        private System.Windows.Forms.Button buttonCreate;
         private System.Windows.Forms.Button buttonToPdf;
         private Microsoft.Reporting.WinForms.ReportViewer reportViewer;
-        private System.Windows.Forms.BindingSource ReportOrderByDatesViewModelBindingSource;
     }
 }
