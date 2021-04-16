@@ -73,7 +73,6 @@ namespace CarFactoryBusinessLogic.BusinessLogics
                     Count = order.Count,
                     Sum = order.Sum,
                     DateCreate = order.DateCreate,
-                    DateImplement = DateTime.Now,
                     Status = OrderStatus.Running
                 });
             }
@@ -94,10 +93,10 @@ namespace CarFactoryBusinessLogic.BusinessLogics
             {
                 Id = order.Id,
                 CarId = order.CarId,
+                ImplementerId=order.ImplementerId,
                 Count = order.Count,
                 Sum = order.Sum,
                 DateCreate = order.DateCreate,
-                DateImplement = order.DateImplement,
                 Status = OrderStatus.Ready
             });
         }
@@ -117,6 +116,7 @@ namespace CarFactoryBusinessLogic.BusinessLogics
             {
                 Id = order.Id,
                 CarId = order.CarId,
+                ImplementerId=order.ImplementerId,
                 Count = order.Count,
                 Sum = order.Sum,
                 DateCreate = order.DateCreate,

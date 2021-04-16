@@ -38,6 +38,7 @@ namespace CarFactoryView
                 dataGridView.Columns["Id"].Visible = false;
                 dataGridView.Columns["CarId"].Visible = false;
                 dataGridView.Columns["ImplementerId"].Visible = false;
+                dataGridView.Columns["ClientId"].Visible = false;
             }
             catch (Exception ex)
             {
