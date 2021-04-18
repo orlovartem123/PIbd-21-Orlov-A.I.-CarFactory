@@ -117,6 +117,5 @@ namespace CarFactoryBusinessLogic.BusinessLogics
                 Status = OrderStatus.Paid
             });
         }
-
     }
 }

@@ -17,6 +17,7 @@ namespace CarFactoryView
         {
             InitializeComponent();
             this._orderLogic = orderLogic;
+
         }
 
         private void FormMain_Load(object sender, EventArgs e)
