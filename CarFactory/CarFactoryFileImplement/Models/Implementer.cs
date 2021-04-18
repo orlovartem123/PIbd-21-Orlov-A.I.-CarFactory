@@ -1,6 +1,4 @@
-﻿using System.Collections.Generic;
-
-namespace CarFactoryFileImplement.Models
+﻿namespace CarFactoryFileImplement.Models
 {
     public class Implementer
     {

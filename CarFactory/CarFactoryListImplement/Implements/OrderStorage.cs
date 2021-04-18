@@ -5,7 +5,6 @@ using CarFactoryBusinessLogic.ViewModels;
 using CarFactoryListImplement.Models;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 
 namespace CarFactoryListImplement.Implements
 {
@@ -157,11 +156,11 @@ namespace CarFactoryListImplement.Implements
             {
                 Id = order.Id,
                 CarId = order.CarId,
-                ClientId=order.ClientId,
-                ImplementerId=order.ImplementerId,
+                ClientId = order.ClientId,
+                ImplementerId = order.ImplementerId,
                 CarName = CarName,
-                ClientFIO=ClientName,
-                ImplementerFIO=ImplementerFIO,
+                ClientFIO = ClientName,
+                ImplementerFIO = ImplementerFIO,
                 Count = order.Count,
                 Sum = order.Sum,
                 Status = order.Status,

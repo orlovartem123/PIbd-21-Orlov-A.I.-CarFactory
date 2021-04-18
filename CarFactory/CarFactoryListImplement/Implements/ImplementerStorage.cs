@@ -4,7 +4,6 @@ using CarFactoryBusinessLogic.ViewModels;
 using CarFactoryListImplement.Models;
 using System;
 using System.Collections.Generic;
-using System.Text;
 
 namespace CarFactoryListImplement.Implements
 {
