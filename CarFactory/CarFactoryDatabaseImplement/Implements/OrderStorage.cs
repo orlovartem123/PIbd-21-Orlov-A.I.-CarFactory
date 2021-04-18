@@ -2,6 +2,7 @@
 using CarFactoryBusinessLogic.Interfaces;
 using CarFactoryBusinessLogic.ViewModels;
 using CarFactoryDatabaseImplement.Models;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -35,7 +36,7 @@ namespace CarFactoryDatabaseImplement.Implements
 			}
 			using (var context = new CarFactoryDbContext())
 			{
-				var order = context.Orders
+				var order = context.Orders.Include(rec => rec.Car)
 				.FirstOrDefault(rec => rec.Id == model.Id || rec.Id == model.Id);
 				return order != null ?
 				CreateModel(order) : null;
@@ -52,6 +53,7 @@ namespace CarFactoryDatabaseImplement.Implements
 			{
 				return context.Orders
 				.Where(rec => rec.Id == model.Id)
+				.Include(rec => rec.Car)
 				.Select(CreateModel).ToList();
 			}
 		}
@@ -60,7 +62,7 @@ namespace CarFactoryDatabaseImplement.Implements
 		{
 			using (var context = new CarFactoryDbContext())
 			{
-				return context.Orders
+				return context.Orders.Include(rec=>rec.Car)
 				.Select(CreateModel).ToList();
 			}
 		}
@@ -107,7 +109,7 @@ namespace CarFactoryDatabaseImplement.Implements
 				{
 					Id = order.Id,
 					CarId = order.CarId,
-					CarName = context.Cars.FirstOrDefault(car => car.Id == order.CarId)?.CarName,
+					CarName = order.Car.CarName, 
 					Count = order.Count,
 					Sum = order.Sum,
 					Status = order.Status,
