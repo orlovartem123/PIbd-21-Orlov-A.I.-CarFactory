@@ -13,11 +13,13 @@ namespace CarFactoryView
 
         private readonly OrderLogic _orderLogic;
 
-        public FormCarFactory(OrderLogic orderLogic)
+        private readonly ReportLogic report;
+
+        public FormCarFactory(OrderLogic orderLogic, ReportLogic report)
         {
             InitializeComponent();
             this._orderLogic = orderLogic;
-
+            this.report = report;
         }
 
         private void FormMain_Load(object sender, EventArgs e)
@@ -129,9 +131,65 @@ namespace CarFactoryView
             LoadData();
         }
 
+        private void CarsListToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            using (var dialog = new SaveFileDialog { Filter = "docx|*.docx" })
+            {
+                if (dialog.ShowDialog() == DialogResult.OK)
+                {
+                    report.SaveComponentsToWordFile(new ReportBindingModel
+                    {
+                        FileName = dialog.FileName
+                    });
+                    MessageBox.Show("Done", "Success", MessageBoxButtons.OK,
+                    MessageBoxIcon.Information);
+                }
+            }
+        }
+
+        private void CarsByComponentsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var form = Container.Resolve<FormReportCarsByComponents>();
+            form.ShowDialog();
+        }
+
+        private void OrdersListToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var form = Container.Resolve<FormReportOrders>();
+            form.ShowDialog();
+        }
+
         private void addComponentsToolStripMenuItem_Click(object sender, EventArgs e)
         {
             var form = Container.Resolve<FormAddComponentsToWarehouse>();
+            form.ShowDialog();
+        }
+
+        private void warehousesListToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            using (var dialog = new SaveFileDialog { Filter = "docx|*.docx" })
+            {
+                if (dialog.ShowDialog() == DialogResult.OK)
+                {
+                    report.SaveWarehousesToWordFile(new ReportBindingModel
+                    {
+                        FileName = dialog.FileName
+                    });
+                    MessageBox.Show("Done", "Success", MessageBoxButtons.OK,
+                    MessageBoxIcon.Information);
+                }
+            }
+        }
+
+        private void componentsByWarehousesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var form = Container.Resolve<FormReportComponentsByWarehouses>();
+            form.ShowDialog();
+        }
+
+        private void ordersByDatesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var form = Container.Resolve<FormReportOrdersByDates>();
             form.ShowDialog();
         }
     }

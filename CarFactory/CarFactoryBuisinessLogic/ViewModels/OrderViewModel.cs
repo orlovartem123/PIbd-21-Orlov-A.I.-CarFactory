@@ -25,6 +25,6 @@ namespace CarFactoryBusinessLogic.ViewModels
         public DateTime DateCreate { get; set; }
 
         [DisplayName("Complition date")]
-        public DateTime? DateImplement { get; set; }
+        public DateTime? DateImplement { get; set; }
     }
 }

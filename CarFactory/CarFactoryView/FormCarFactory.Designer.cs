@@ -33,13 +33,20 @@
             this.componentsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.carsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.warehousesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.addComponentsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.reportsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.componentsListToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.componentsByCarsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.ordersListToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.dataGridView = new System.Windows.Forms.DataGridView();
             this.buttonCreateOrder = new System.Windows.Forms.Button();
             this.buttonOrderReady = new System.Windows.Forms.Button();
             this.buttonRef = new System.Windows.Forms.Button();
             this.buttonTakeInWork = new System.Windows.Forms.Button();
             this.buttonPayOrder = new System.Windows.Forms.Button();
-            this.addComponentsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.warehousesListToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.componentsByWarehousesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.ordersByDatesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).BeginInit();
             this.SuspendLayout();
@@ -48,7 +55,8 @@
             // 
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.catalogsToolStripMenuItem,
-            this.addComponentsToolStripMenuItem});
+            this.addComponentsToolStripMenuItem,
+            this.reportsToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(800, 24);
@@ -68,23 +76,64 @@
             // componentsToolStripMenuItem
             // 
             this.componentsToolStripMenuItem.Name = "componentsToolStripMenuItem";
-            this.componentsToolStripMenuItem.Size = new System.Drawing.Size(240, 22);
+            this.componentsToolStripMenuItem.Size = new System.Drawing.Size(143, 22);
             this.componentsToolStripMenuItem.Text = "Components";
             this.componentsToolStripMenuItem.Click += new System.EventHandler(this.ComponentsToolStripMenuItem_Click);
             // 
             // carsToolStripMenuItem
             // 
             this.carsToolStripMenuItem.Name = "carsToolStripMenuItem";
-            this.carsToolStripMenuItem.Size = new System.Drawing.Size(240, 22);
+            this.carsToolStripMenuItem.Size = new System.Drawing.Size(143, 22);
             this.carsToolStripMenuItem.Text = "Cars";
             this.carsToolStripMenuItem.Click += new System.EventHandler(this.CarsToolStripMenuItem_Click);
             // 
             // warehousesToolStripMenuItem
             // 
             this.warehousesToolStripMenuItem.Name = "warehousesToolStripMenuItem";
-            this.warehousesToolStripMenuItem.Size = new System.Drawing.Size(240, 22);
+            this.warehousesToolStripMenuItem.Size = new System.Drawing.Size(143, 22);
             this.warehousesToolStripMenuItem.Text = "Warehouses";
             this.warehousesToolStripMenuItem.Click += new System.EventHandler(this.WarehousesToolStripMenuItem_Click);
+            // 
+            // addComponentsToolStripMenuItem
+            // 
+            this.addComponentsToolStripMenuItem.Name = "addComponentsToolStripMenuItem";
+            this.addComponentsToolStripMenuItem.Size = new System.Drawing.Size(111, 20);
+            this.addComponentsToolStripMenuItem.Text = "Add components";
+            this.addComponentsToolStripMenuItem.Click += new System.EventHandler(this.addComponentsToolStripMenuItem_Click);
+            // 
+            // reportsToolStripMenuItem
+            // 
+            this.reportsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.componentsListToolStripMenuItem,
+            this.componentsByCarsToolStripMenuItem,
+            this.ordersListToolStripMenuItem,
+            this.warehousesListToolStripMenuItem,
+            this.componentsByWarehousesToolStripMenuItem,
+            this.ordersByDatesToolStripMenuItem});
+            this.reportsToolStripMenuItem.Name = "reportsToolStripMenuItem";
+            this.reportsToolStripMenuItem.Size = new System.Drawing.Size(59, 20);
+            this.reportsToolStripMenuItem.Text = "Reports";
+            // 
+            // componentsListToolStripMenuItem
+            // 
+            this.componentsListToolStripMenuItem.Name = "componentsListToolStripMenuItem";
+            this.componentsListToolStripMenuItem.Size = new System.Drawing.Size(224, 22);
+            this.componentsListToolStripMenuItem.Text = "Cars list";
+            this.componentsListToolStripMenuItem.Click += new System.EventHandler(this.CarsListToolStripMenuItem_Click);
+            // 
+            // componentsByCarsToolStripMenuItem
+            // 
+            this.componentsByCarsToolStripMenuItem.Name = "componentsByCarsToolStripMenuItem";
+            this.componentsByCarsToolStripMenuItem.Size = new System.Drawing.Size(224, 22);
+            this.componentsByCarsToolStripMenuItem.Text = "Cars by components";
+            this.componentsByCarsToolStripMenuItem.Click += new System.EventHandler(this.CarsByComponentsToolStripMenuItem_Click);
+            // 
+            // ordersListToolStripMenuItem
+            // 
+            this.ordersListToolStripMenuItem.Name = "ordersListToolStripMenuItem";
+            this.ordersListToolStripMenuItem.Size = new System.Drawing.Size(224, 22);
+            this.ordersListToolStripMenuItem.Text = "Orders list";
+            this.ordersListToolStripMenuItem.Click += new System.EventHandler(this.OrdersListToolStripMenuItem_Click);
             // 
             // dataGridView
             // 
@@ -151,12 +200,26 @@
             this.buttonPayOrder.UseVisualStyleBackColor = true;
             this.buttonPayOrder.Click += new System.EventHandler(this.ButtonPayOrder_Click);
             // 
-            // addComponentsToolStripMenuItem
+            // warehousesListToolStripMenuItem
             // 
-            this.addComponentsToolStripMenuItem.Name = "addComponentsToolStripMenuItem";
-            this.addComponentsToolStripMenuItem.Size = new System.Drawing.Size(111, 20);
-            this.addComponentsToolStripMenuItem.Text = "Add components";
-            this.addComponentsToolStripMenuItem.Click += new System.EventHandler(this.addComponentsToolStripMenuItem_Click);
+            this.warehousesListToolStripMenuItem.Name = "warehousesListToolStripMenuItem";
+            this.warehousesListToolStripMenuItem.Size = new System.Drawing.Size(224, 22);
+            this.warehousesListToolStripMenuItem.Text = "Warehouses list";
+            this.warehousesListToolStripMenuItem.Click += new System.EventHandler(this.warehousesListToolStripMenuItem_Click);
+            // 
+            // componentsByWarehousesToolStripMenuItem
+            // 
+            this.componentsByWarehousesToolStripMenuItem.Name = "componentsByWarehousesToolStripMenuItem";
+            this.componentsByWarehousesToolStripMenuItem.Size = new System.Drawing.Size(224, 22);
+            this.componentsByWarehousesToolStripMenuItem.Text = "Components by warehouses";
+            this.componentsByWarehousesToolStripMenuItem.Click += new System.EventHandler(this.componentsByWarehousesToolStripMenuItem_Click);
+            // 
+            // ordersByDatesToolStripMenuItem
+            // 
+            this.ordersByDatesToolStripMenuItem.Name = "ordersByDatesToolStripMenuItem";
+            this.ordersByDatesToolStripMenuItem.Size = new System.Drawing.Size(224, 22);
+            this.ordersByDatesToolStripMenuItem.Text = "Orders by dates";
+            this.ordersByDatesToolStripMenuItem.Click += new System.EventHandler(this.ordersByDatesToolStripMenuItem_Click);
             // 
             // FormCarFactory
             // 
@@ -194,7 +257,14 @@
 		private System.Windows.Forms.Button buttonRef;
 		private System.Windows.Forms.Button buttonTakeInWork;
 		private System.Windows.Forms.Button buttonPayOrder;
-        private System.Windows.Forms.ToolStripMenuItem warehousesToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem reportsToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem componentsListToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem componentsByCarsToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem ordersListToolStripMenuItem;
+				private System.Windows.Forms.ToolStripMenuItem warehousesToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem addComponentsToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem warehousesListToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem componentsByWarehousesToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem ordersByDatesToolStripMenuItem;
     }
 }
