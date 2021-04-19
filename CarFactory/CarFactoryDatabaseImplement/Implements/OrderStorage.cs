@@ -108,6 +108,10 @@ namespace CarFactoryDatabaseImplement.Implements
                 {
                     model.ClientId = element.ClientId;
                 }
+                if (!model.ImplementerId.HasValue)
+                {
+                    model.ImplementerId = element.ImplementerId;
+                }
                 CreateModel(model, element);
                 context.SaveChanges();
             }

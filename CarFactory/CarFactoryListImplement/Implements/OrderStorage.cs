@@ -107,6 +107,14 @@ namespace CarFactoryListImplement.Implements
             {
                 throw new Exception("Element not found");
             }
+            if (!model.ClientId.HasValue)
+            {
+                model.ClientId = tempOrder.ClientId;
+            }
+            if (!model.ImplementerId.HasValue)
+            {
+                model.ImplementerId = tempOrder.ImplementerId;
+            }
             CreateModel(model, tempOrder);
         }
 

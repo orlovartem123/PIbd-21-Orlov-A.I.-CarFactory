@@ -84,6 +84,10 @@ namespace CarFactoryFileImplement.Implements
             {
                 model.ClientId = element.ClientId;
             }
+            if (!model.ImplementerId.HasValue)
+            {
+                model.ImplementerId = element.ImplementerId;
+            }
             CreateModel(model, element);
         }
 
