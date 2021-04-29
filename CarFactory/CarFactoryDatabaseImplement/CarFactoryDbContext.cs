@@ -4,12 +4,12 @@ using Microsoft.EntityFrameworkCore;
 namespace CarFactoryDatabaseImplement
 {
     public class CarFactoryDbContext : DbContext
-    {
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        {
-            if (optionsBuilder.IsConfigured == false)
-            {
-                optionsBuilder.UseSqlServer(@"data source='LAPTOP-4UI9Q996\SQLEXPRESS'; initial catalog='CarFactoryDatabase'; user id='sa'; password='123123'; Persist Security Info='True'; Connect Timeout='60';");
+	{
+		protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+		{
+			if (optionsBuilder.IsConfigured == false)
+			{
+                optionsBuilder.UseSqlServer(@"data source='LAPTOP-4UI9Q996\SQLEXPRESS'; initial catalog='CarFactoryDatabaseHARD'; user id='sa'; password='123123'; Persist Security Info='True'; Connect Timeout='60';");
             }
             base.OnConfiguring(optionsBuilder);
         }
@@ -19,8 +19,12 @@ namespace CarFactoryDatabaseImplement
 
         public virtual DbSet<CarComponent> CarComponents { set; get; }
 
-        public virtual DbSet<Order> Orders { set; get; }
+		public virtual DbSet<Order> Orders { set; get; }
 
-        public virtual DbSet<Client> Clients { set; get; }
-    }
+    public virtual DbSet<Client> Clients { set; get; }
+
+		public virtual DbSet<Warehouse> Warehouses { set; get; }
+
+		public virtual DbSet<WarehouseComponent> WarehouseComponents { set; get; }
+	}
 }

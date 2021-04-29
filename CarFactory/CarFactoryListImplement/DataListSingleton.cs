@@ -10,6 +10,7 @@ namespace CarFactoryListImplement
         public List<Order> Orders { get; set; }
         public List<Car> Cars { get; set; }
         public List<Client> Clients { get; set; }
+        public List<Warehouse> Warehouses { get; set; }
 
         private DataListSingleton()
         {
@@ -17,6 +18,7 @@ namespace CarFactoryListImplement
             Orders = new List<Order>();
             Cars = new List<Car>();
             Clients = new List<Client>();
+            Warehouses = new List<Warehouse>();
         }
 
         public static DataListSingleton GetInstance()

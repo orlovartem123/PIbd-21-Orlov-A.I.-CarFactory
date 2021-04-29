@@ -121,6 +121,68 @@ namespace CarFactoryBusinessLogic.BusinessLogics
                     }
                     workbookpart.Workbook.Save();
                 }
+                else if (info.Warehouses!=null)
+                {
+                    foreach (var pc in info.Warehouses)
+                    {
+                        InsertCellInWorksheet(new ExcelCellParameters
+                        {
+                            Worksheet = worksheetPart.Worksheet,
+                            ShareStringPart = shareStringPart,
+                            ColumnName = "A",
+                            RowIndex = rowIndex,
+                            Text = pc.WarehouseName,
+                            StyleIndex = 0U
+                        });
+                        rowIndex++;
+
+                        foreach (var component in pc.Components)
+                        {
+                            InsertCellInWorksheet(new ExcelCellParameters
+                            {
+                                Worksheet = worksheetPart.Worksheet,
+                                ShareStringPart = shareStringPart,
+                                ColumnName = "B",
+                                RowIndex = rowIndex,
+                                Text = component.Item1,
+                                StyleIndex = 1U
+                            });
+
+                            InsertCellInWorksheet(new ExcelCellParameters
+                            {
+                                Worksheet = worksheetPart.Worksheet,
+                                ShareStringPart = shareStringPart,
+                                ColumnName = "C",
+                                RowIndex = rowIndex,
+                                Text = component.Item2.ToString(),
+                                StyleIndex = 1U
+                            });
+
+                            rowIndex++;
+                        }
+
+                        InsertCellInWorksheet(new ExcelCellParameters
+                        {
+                            Worksheet = worksheetPart.Worksheet,
+                            ShareStringPart = shareStringPart,
+                            ColumnName = "C",
+                            RowIndex = rowIndex,
+                            Text = pc.TotalCount.ToString(),
+                            StyleIndex = 0U
+                        });
+                        InsertCellInWorksheet(new ExcelCellParameters
+                        {
+                            Worksheet = worksheetPart.Worksheet,
+                            ShareStringPart = shareStringPart,
+                            ColumnName = "A",
+                            RowIndex = rowIndex,
+                            Text = "Total",
+                            StyleIndex = 0U
+                        });
+                        rowIndex++;
+                    }
+                    workbookpart.Workbook.Save();
+                }
             }
         }
         /// <summary>
