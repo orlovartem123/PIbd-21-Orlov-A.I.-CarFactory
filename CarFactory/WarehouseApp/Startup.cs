@@ -1,13 +1,17 @@
-using CarFactoryBusinessLogic.BusinessLogics;
-using CarFactoryBusinessLogic.Interfaces;
-using CarFactoryDatabaseImplement.Implements;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.HttpsPolicy;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.Extensions.Logging;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 
-namespace CarFactoryRestApi
+namespace WarehouseApp
 {
     public class Startup
     {
@@ -21,17 +25,7 @@ namespace CarFactoryRestApi
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddTransient<IClientStorage, ClientStorage>();
-            services.AddTransient<IOrderStorage, OrderStorage>();
-            services.AddTransient<ICarStorage, CarStorage>();
-            services.AddTransient<IWarehouseStorage, WarehouseStorage>();
-            services.AddTransient<IComponentStorage, ComponentStorage>();
-            services.AddTransient<OrderLogic>();
-            services.AddTransient<ClientLogic>();
-            services.AddTransient<CarLogic>();
-            services.AddTransient<WarehouseLogic>();
-            services.AddTransient<ComponentLogic>();
-            services.AddControllers().AddNewtonsoftJson();
+            services.AddControllers();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
