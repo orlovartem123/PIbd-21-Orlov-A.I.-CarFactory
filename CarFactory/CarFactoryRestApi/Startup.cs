@@ -40,13 +40,14 @@ namespace CarFactoryRestApi
                 MailPassword = Configuration["MailPassword"],
             });
 
-            var timer = new System.Threading.Timer(new TimerCallback(MailCheck), new MailCheckInfo
+            var timer = new Timer(new TimerCallback(MailCheck), new MailCheckInfo
             {
                 PopHost = Configuration["PopHost"],
                 PopPort = Convert.ToInt32(Configuration["PopPort"]),
                 Storage = new MessageInfoStorage(),
                 ClientStorage = new ClientStorage()
             }, 0, 100000);
+
             services.AddControllers().AddNewtonsoftJson();
         }
 
