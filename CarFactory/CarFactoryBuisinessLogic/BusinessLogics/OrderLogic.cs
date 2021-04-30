@@ -127,6 +127,15 @@ namespace CarFactoryBusinessLogic.BusinessLogics
             });
 
             //send email
+            MailLogic.MailSendAsync(new MailSendInfo
+            {
+                MailAddress = _clientStorage.GetElement(new ClientBindingModel
+                {
+                    Id = order.ClientId
+                })?.Email,
+                Subject = $"Finish order",
+                Text = $"Order for the amount {order.Sum:N2} finished."
+            });
         }
 
         public void PayOrder(ChangeStatusBindingModel model)
@@ -153,6 +162,15 @@ namespace CarFactoryBusinessLogic.BusinessLogics
             });
 
             //send email
+            MailLogic.MailSendAsync(new MailSendInfo
+            {
+                MailAddress = _clientStorage.GetElement(new ClientBindingModel
+                {
+                    Id = order.ClientId
+                })?.Email,
+                Subject = $"Paid order",
+                Text = $"Order for the amount {order.Sum:N2} paid."
+            });
         }
     }
 }

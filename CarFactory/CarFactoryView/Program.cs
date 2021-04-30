@@ -20,7 +20,7 @@ namespace CarFactoryView
         static void Main()
         {
             var container = BuildUnityContainer();
-
+            var value = Convert.ToInt32(ConfigurationManager.AppSettings["SmtpClientPort"]);
             MailLogic.MailConfig(new MailConfig
             {
                 SmtpClientHost = ConfigurationManager.AppSettings["SmtpClientHost"],

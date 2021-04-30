@@ -1,4 +1,5 @@
 using CarFactoryBusinessLogic.BusinessLogics;
+using CarFactoryBusinessLogic.HelperModels;
 using CarFactoryBusinessLogic.Interfaces;
 using CarFactoryDatabaseImplement.Implements;
 using Microsoft.AspNetCore.Builder;
@@ -6,6 +7,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using System;
 
 namespace CarFactoryRestApi
 {
@@ -14,6 +16,13 @@ namespace CarFactoryRestApi
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
+            MailLogic.MailConfig(new MailConfig
+            {
+                SmtpClientHost = configuration["SmtpClientHost"],
+                SmtpClientPort = Convert.ToInt32(configuration["SmtpClientPort"]),
+                MailLogin = configuration["MailLogin"],
+                MailPassword = configuration["MailPassword"],
+            });
         }
 
         public IConfiguration Configuration { get; }

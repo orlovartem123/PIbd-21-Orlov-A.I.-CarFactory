@@ -4,6 +4,7 @@ using System.Runtime.Serialization;
 
 namespace CarFactoryBusinessLogic.ViewModels
 {
+    [DataContract]
     public class MessageInfoViewModel
     {
         [DataMember]
