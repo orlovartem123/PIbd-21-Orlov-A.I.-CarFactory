@@ -82,7 +82,6 @@ namespace CarFactoryFileImplement.Implements
         {
             car.CarName = model.CarName;
             car.Price = model.Price;
-            // удаляем убранные
             foreach (var key in car.CarComponents.Keys.ToList())
             {
                 if (!model.CarComponents.ContainsKey(key))
@@ -90,7 +89,6 @@ namespace CarFactoryFileImplement.Implements
                     car.CarComponents.Remove(key);
                 }
             }
-            // обновляем существуюущие и добавляем новые
             foreach (var component in model.CarComponents)
             {
                 if (car.CarComponents.ContainsKey(component.Key))
