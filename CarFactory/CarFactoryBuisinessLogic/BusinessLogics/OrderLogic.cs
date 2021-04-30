@@ -51,6 +51,7 @@ namespace CarFactoryBusinessLogic.BusinessLogics
         {
             lock (locker)
             {
+                OrderStatus status = OrderStatus.Running;
                 var order = _orderStorage.GetElement(new OrderBindingModel
                 {
                     Id = model.OrderId
@@ -64,9 +65,10 @@ namespace CarFactoryBusinessLogic.BusinessLogics
                     throw new Exception("Order isn't in the status \"Accepted\"");
                 }
                 var car = _carStorage.GetElement(new CarBindingModel { Id = order.CarId });
-                if (!_warehouseStorage.CheckComponentsCount(order.Count,car.CarComponents))
+                if (!_warehouseStorage.CheckComponentsCount(order.Count, car.CarComponents))
                 {
-                    throw new Exception("Not enough components in warehouse");
+                    status = OrderStatus.NeedMaterials;
+                    //throw new Exception("Not enough components in warehouse");
                 }
                 if (order.ImplementerId.HasValue)
                 {
@@ -81,7 +83,7 @@ namespace CarFactoryBusinessLogic.BusinessLogics
                     Count = order.Count,
                     Sum = order.Sum,
                     DateCreate = order.DateCreate,
-                    Status = OrderStatus.Running
+                    Status = status
                 });
             }
         }
@@ -93,6 +95,15 @@ namespace CarFactoryBusinessLogic.BusinessLogics
             {
                 throw new Exception("Order not found");
             }
+            if (order.Status == OrderStatus.NeedMaterials)
+            {
+                order.Status = OrderStatus.Running;
+            }
+            var car = _carStorage.GetElement(new CarBindingModel { Id = order.CarId });
+            if (!_warehouseStorage.CheckComponentsCount(order.Count, car.CarComponents))
+            {
+                return;
+            }
             if (order.Status != OrderStatus.Running)
             {
                 throw new Exception("Order isn't in the status \"Running\"");
@@ -101,7 +112,7 @@ namespace CarFactoryBusinessLogic.BusinessLogics
             {
                 Id = order.Id,
                 CarId = order.CarId,
-                ImplementerId=order.ImplementerId,
+                ImplementerId = order.ImplementerId,
                 Count = order.Count,
                 Sum = order.Sum,
                 DateCreate = order.DateCreate,
@@ -124,7 +135,7 @@ namespace CarFactoryBusinessLogic.BusinessLogics
             {
                 Id = order.Id,
                 CarId = order.CarId,
-                ImplementerId=order.ImplementerId,
+                ImplementerId = order.ImplementerId,
                 Count = order.Count,
                 Sum = order.Sum,
                 DateCreate = order.DateCreate,

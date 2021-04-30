@@ -31,7 +31,7 @@ namespace CarFactoryDatabaseImplement.Implements
                             }
                             if (requiredCount > 0)
                             {
-                                throw new Exception("Not enough components in warehouses");
+                                return false;
                             }
                         }
                         context.SaveChanges();
@@ -40,7 +40,7 @@ namespace CarFactoryDatabaseImplement.Implements
                     catch (Exception)
                     {
                         transaction.Rollback();
-                        throw;
+                        return false;
                     }
                 }
             }
