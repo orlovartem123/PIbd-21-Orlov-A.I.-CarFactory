@@ -39,7 +39,7 @@ namespace CarFactoryClientApp.Controllers
             {
                 return Redirect("~/Home/Enter");
             }
-            var model = APIClient.GetRequest<MessageInfoViewModel>($"api/client/getmessages?clientId={Program.Client.Id}");
+            var model = APIClient.GetRequest<List<MessageInfoViewModel>>($"api/client/getmessages?clientId={Program.Client.Id}");
             return View(model);
         }
 
