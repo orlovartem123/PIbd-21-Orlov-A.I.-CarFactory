@@ -31,7 +31,7 @@ namespace CarFactoryRestApi.Controllers
         public void DeleteWarehouse(WarehouseBindingModel model) => _warehouse.Delete(model);
 
         [HttpPost]
-        public void Restoking(WarehouseAddComponentBindingModel model) => _warehouse.AddComponent(model);
+        public void AddComponentsToWarehouse(WarehouseAddComponentBindingModel model) => _warehouse.AddComponent(model);
 
         [HttpGet]
         public WarehouseViewModel GetWarehouse(int warehouseId) => _warehouse.Read(new WarehouseBindingModel { Id = warehouseId })?[0];
