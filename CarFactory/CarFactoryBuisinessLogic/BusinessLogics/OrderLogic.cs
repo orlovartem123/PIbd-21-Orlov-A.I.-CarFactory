@@ -38,6 +38,7 @@ namespace CarFactoryBusinessLogic.BusinessLogics
             _orderStorage.Insert(new OrderBindingModel
             {
                 CarId = model.CarId,
+                ClientId=model.ClientId,
                 Count = model.Count,
                 Sum = model.Sum,
                 DateCreate = DateTime.Now,
