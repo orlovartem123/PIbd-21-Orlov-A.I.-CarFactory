@@ -5,7 +5,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.AspNetCore.Mvc.NewtonsoftJson" Version="3.1.1" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.NewtonsoftJson" Version="3.1.13" />
   </ItemGroup>
 
   <ItemGroup>
@@ -14,6 +14,8 @@
     <ProjectReference Include="..\CarFactoryFileImplement\CarFactoryFileImplement.csproj" />
     <ProjectReference Include="..\CarFactoryListImplement\CarFactoryListImplement.csproj" />
   </ItemGroup>
+
+  <ProjectExtensions><VisualStudio><UserProperties properties_4launchsettings_1json__JsonSchema="" /></VisualStudio></ProjectExtensions>
 
 
 </Project>

@@ -19,5 +19,8 @@ namespace CarFactoryDatabaseImplement.Models
 
         [ForeignKey("ClientId")]
         public virtual List<Order> Orders { get; set; }
+
+        [ForeignKey("ClientId")]
+        public virtual List<MessageInfo> Messages { get; set; }
     }
 }

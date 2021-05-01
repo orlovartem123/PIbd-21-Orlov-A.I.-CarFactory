@@ -33,6 +33,16 @@ namespace CarFactoryClientApp.Controllers
             return View(Program.Client);
         }
 
+        public IActionResult Mail()
+        {
+            if (Program.Client == null)
+            {
+                return Redirect("~/Home/Enter");
+            }
+            var model = APIClient.GetRequest<List<MessageInfoViewModel>>($"api/client/getmessages?clientId={Program.Client.Id}");
+            return View(model);
+        }
+
         [HttpPost]
         public void Privacy(string login, string password, string fio)
         {
@@ -123,7 +133,6 @@ namespace CarFactoryClientApp.Controllers
             {
                 return;
             }
-            var str = Program.Client.Id;
             //прописать запрос
             APIClient.PostRequest("api/main/createorder", new CreateOrderBindingModel
             {

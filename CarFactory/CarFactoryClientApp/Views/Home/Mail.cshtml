@@ -1,0 +1,49 @@
+﻿@using CarFactoryBusinessLogic.ViewModels
+@model List<MessageInfoViewModel>
+@{
+    ViewData["Title"] = "Mail";
+}
+<div class="text-center">
+    <h1 class="display-4">Mail</h1>
+</div>
+<div class="text-center">
+    @{
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>
+                        SenderName
+                    </th>
+                    <th>
+                        Date delivery
+                    </th>
+                    <th>
+                        Subject
+                    </th>
+                    <th>
+                        Body
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.SenderName)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.DateDelivery)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Subject)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Body)
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }
+</div>
