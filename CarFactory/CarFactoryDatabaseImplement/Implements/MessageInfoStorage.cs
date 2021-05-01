@@ -58,7 +58,6 @@ namespace CarFactoryDatabaseImplement.Implements
                 if (element != null)
                 {
                     return;
-                    throw new Exception("Message with same ID already exists");
                 }
                 context.Messages.Add(new MessageInfo
                 {
