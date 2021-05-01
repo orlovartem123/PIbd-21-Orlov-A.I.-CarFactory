@@ -68,7 +68,6 @@ namespace CarFactoryBusinessLogic.BusinessLogics
                 if (!_warehouseStorage.CheckComponentsCount(order.Count, car.CarComponents))
                 {
                     status = OrderStatus.NeedMaterials;
-                    //throw new Exception("Not enough components in warehouse");
                 }
                 if (order.ImplementerId.HasValue)
                 {
