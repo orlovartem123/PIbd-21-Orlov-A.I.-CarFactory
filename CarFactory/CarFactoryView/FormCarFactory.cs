@@ -15,11 +15,14 @@ namespace CarFactoryView
 
         private readonly ReportLogic report;
 
-        public FormCarFactory(OrderLogic orderLogic, ReportLogic report)
+        private readonly WorkModeling workModeling;
+
+        public FormCarFactory(OrderLogic orderLogic, ReportLogic report, WorkModeling workModeling)
         {
             InitializeComponent();
             this._orderLogic = orderLogic;
             this.report = report;
+            this.workModeling = workModeling;
         }
 
         private void FormMain_Load(object sender, EventArgs e)
@@ -34,6 +37,8 @@ namespace CarFactoryView
                 dataGridView.DataSource = _orderLogic.Read(null);
                 dataGridView.Columns["Id"].Visible = false;
                 dataGridView.Columns["CarId"].Visible = false;
+                dataGridView.Columns["ImplementerId"].Visible = false;
+                dataGridView.Columns["ClientId"].Visible = false;
             }
             catch (Exception ex)
             {
@@ -65,48 +70,6 @@ namespace CarFactoryView
             var form = Container.Resolve<FormCreateOrder>();
             form.ShowDialog();
             LoadData();
-        }
-
-        private void ButtonTakeOrderInWork_Click(object sender, EventArgs e)
-        {
-            if (dataGridView.SelectedRows.Count == 1)
-            {
-                int id = Convert.ToInt32(dataGridView.SelectedRows[0].Cells[0].Value);
-                try
-                {
-                    _orderLogic.TakeOrderInWork(new ChangeStatusBindingModel
-                    {
-                        OrderId = id
-                    });
-                    LoadData();
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK,
-                   MessageBoxIcon.Error);
-                }
-            }
-        }
-
-        private void ButtonOrderReady_Click(object sender, EventArgs e)
-        {
-            if (dataGridView.SelectedRows.Count == 1)
-            {
-                int id = Convert.ToInt32(dataGridView.SelectedRows[0].Cells[0].Value);
-                try
-                {
-                    _orderLogic.FinishOrder(new ChangeStatusBindingModel
-                    {
-                        OrderId = id
-                    });
-                    LoadData();
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK,
-                   MessageBoxIcon.Error);
-                }
-            }
         }
 
         private void ButtonPayOrder_Click(object sender, EventArgs e)
@@ -196,6 +159,18 @@ namespace CarFactoryView
         private void clientsToolStripMenuItem_Click(object sender, EventArgs e)
         {
             var form = Container.Resolve<FormClients>();
+            form.ShowDialog();
+        }
+
+        private void startWorkingToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            workModeling.DoWork();
+            LoadData();
+        }
+
+        private void implementersToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var form = Container.Resolve<FormImplementers>();
             form.ShowDialog();
         }
     }
