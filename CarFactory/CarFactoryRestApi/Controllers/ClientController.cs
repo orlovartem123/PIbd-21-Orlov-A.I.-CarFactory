@@ -4,6 +4,7 @@ using CarFactoryBusinessLogic.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text.RegularExpressions;
 
 namespace CarFactoryRestApi.Controllers
@@ -21,20 +22,29 @@ namespace CarFactoryRestApi.Controllers
 
         private readonly int _passwordMinLength = 10;
 
+        private readonly int mailsOnPage = 4;
+
         public ClientController(ClientLogic logic, MailLogic logicM)
         {
             _logic = logic;
             _logicM = logicM;
+            if (mailsOnPage < 1) { mailsOnPage = 5; }
         }
 
         [HttpGet]
-        public ClientViewModel Login(string login, string password) => _logic.Read(new ClientBindingModel { Email = login, Password = password })?[0];
+        public ClientViewModel Login(string login, string password) =>
+            _logic.Read(new ClientBindingModel { Email = login, Password = password })?[0];
 
         [HttpPost]
         public void Register(ClientBindingModel model) => _logic.CreateOrUpdate(model);
 
         [HttpGet]
-        public List<MessageInfoViewModel> GetMessages(int clientId) => _logicM.Read(new MessageInfoBindingModel { ClientId = clientId });
+        public (List<MessageInfoViewModel>, int) GetMessages(int clientId, int page)
+        {
+            var list = _logicM.Read(new MessageInfoBindingModel { ClientId = clientId }).ToList();
+            var maxPage = ((list.Count() - 1) / mailsOnPage) + 1;
+            return (list.Skip((page - 1) * mailsOnPage).Take(mailsOnPage).ToList(), maxPage);
+        }
 
         [HttpPost]
         public void UpdateData(ClientBindingModel model)
