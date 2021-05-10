@@ -119,6 +119,7 @@ namespace CarFactoryView
                MessageBoxIcon.Error);
             }
         }
+
         private void ButtonCancel_Click(object sender, EventArgs e)
         {
             DialogResult = DialogResult.Cancel;

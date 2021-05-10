@@ -16,11 +16,14 @@ namespace CarFactoryView
 
         private void FormMails_Load(object sender, EventArgs e)
         {
-            var list = logic.Read(null);
-            if (list != null)
+            try
             {
-                dataGridView.DataSource = list;
-                dataGridView.Columns[0].Visible = false;
+                Program.ConfigGrid(logic.Read(null), dataGridView);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK,
+               MessageBoxIcon.Error);
             }
         }
     }

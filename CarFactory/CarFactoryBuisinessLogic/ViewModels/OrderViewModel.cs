@@ -1,13 +1,17 @@
 ﻿using CarFactoryBusinessLogic.Enums;
 using System;
-using System.ComponentModel;
+using CarFactoryBusinessLogic.Attributes;
 using System.Runtime.Serialization;
 
 namespace CarFactoryBusinessLogic.ViewModels
 {
+    /// <summary>
+    /// Заказ
+    /// </summary>
     [DataContract]
     public class OrderViewModel
     {
+        [Column(title: "Number", width: 100)]
         [DataMember]
         public int Id { get; set; }
 
@@ -20,36 +24,39 @@ namespace CarFactoryBusinessLogic.ViewModels
         [DataMember]
         public int? ImplementerId { get; set; }
 
+        [Column(title: "Client", width: 150)]
         [DataMember]
-        [DisplayName("Client")]
         public string ClientFIO { get; set; }
 
+        [Column(title: "Car", gridViewAutoSize: GridViewAutoSize.Fill)]
         [DataMember]
-        [DisplayName("Car")]
         public string CarName { get; set; }
 
+        [Column(title: "Implementer", width: 150)]
         [DataMember]
-        [DisplayName("Implementer")]
         public string ImplementerFIO { get; set; }
 
+        [Column(title: "Quantity", width: 100)]
         [DataMember]
-        [DisplayName("Quantity")]
         public int Count { get; set; }
 
+        [Column(title: "Sum", width: 50)]
         [DataMember]
-        [DisplayName("Sum")]
         public decimal Sum { get; set; }
 
+        [Column(title: "Status", width: 100)]
         [DataMember]
-        [DisplayName("Status")]
         public OrderStatus Status { get; set; }
 
+        [Column(title: "Creation date", width: 100)]
         [DataMember]
-        [DisplayName("Creation date")]
         public DateTime DateCreate { get; set; }
 
+        [Column(title: "Complition date", width: 100)]
         [DataMember]
-        [DisplayName("Complition date")]
         public DateTime? DateImplement { get; set; }
     }
 }
+
+
+

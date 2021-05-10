@@ -39,11 +39,12 @@
             this.componentsByCarsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ordersListToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.startWorkingToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.mailsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.createBackupToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.dataGridView = new System.Windows.Forms.DataGridView();
             this.buttonCreateOrder = new System.Windows.Forms.Button();
             this.buttonRef = new System.Windows.Forms.Button();
             this.buttonPayOrder = new System.Windows.Forms.Button();
-            this.mailsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).BeginInit();
             this.SuspendLayout();
@@ -54,7 +55,8 @@
             this.catalogsToolStripMenuItem,
             this.reportsToolStripMenuItem,
             this.startWorkingToolStripMenuItem,
-            this.mailsToolStripMenuItem});
+            this.mailsToolStripMenuItem,
+            this.createBackupToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(993, 24);
@@ -138,6 +140,20 @@
             this.startWorkingToolStripMenuItem.Text = "Start working";
             this.startWorkingToolStripMenuItem.Click += new System.EventHandler(this.startWorkingToolStripMenuItem_Click);
             // 
+            // mailsToolStripMenuItem
+            // 
+            this.mailsToolStripMenuItem.Name = "mailsToolStripMenuItem";
+            this.mailsToolStripMenuItem.Size = new System.Drawing.Size(47, 20);
+            this.mailsToolStripMenuItem.Text = "Mails";
+            this.mailsToolStripMenuItem.Click += new System.EventHandler(this.mailsToolStripMenuItem_Click);
+            // 
+            // createBackupToolStripMenuItem
+            // 
+            this.createBackupToolStripMenuItem.Name = "createBackupToolStripMenuItem";
+            this.createBackupToolStripMenuItem.Size = new System.Drawing.Size(95, 20);
+            this.createBackupToolStripMenuItem.Text = "Create backup";
+            this.createBackupToolStripMenuItem.Click += new System.EventHandler(this.createBackupToolStripMenuItem_Click);
+            // 
             // dataGridView
             // 
             this.dataGridView.AllowUserToAddRows = false;
@@ -183,13 +199,6 @@
             this.buttonPayOrder.UseVisualStyleBackColor = true;
             this.buttonPayOrder.Click += new System.EventHandler(this.ButtonPayOrder_Click);
             // 
-            // mailsToolStripMenuItem
-            // 
-            this.mailsToolStripMenuItem.Name = "mailsToolStripMenuItem";
-            this.mailsToolStripMenuItem.Size = new System.Drawing.Size(47, 20);
-            this.mailsToolStripMenuItem.Text = "Mails";
-            this.mailsToolStripMenuItem.Click += new System.EventHandler(this.mailsToolStripMenuItem_Click);
-            // 
             // FormCarFactory
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -230,5 +239,6 @@
         private System.Windows.Forms.ToolStripMenuItem startWorkingToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem implementersToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem mailsToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem createBackupToolStripMenuItem;
     }
 }
