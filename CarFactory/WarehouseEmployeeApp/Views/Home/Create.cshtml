@@ -1,0 +1,27 @@
+﻿@{
+    ViewData["Title"] = "Create warehouse";
+}
+<div class="text-center">
+    <h2 class="display-4">Create warehouse</h2>
+</div>
+<form class="container-fluid" method="post">
+    <div class="form-group">
+        <div class="row">
+            <div class="col-4">Name:</div>
+            <div class="col-8"><input type="text" name="name" id="name" /></div>
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="row">
+            <div class="col-4">Manager:</div>
+            <div class="col-8"><input type="text" name="managerfullname" id="managerfullname" /></div>
+        </div>
+    </div>
+    <div class="form-group row">
+        <div class="col-lg-12">
+            <button type="submit" style="min-width: 100px" class="btn btn-sm btn-light">
+                Create
+            </button>
+        </div>
+    </div>
+</form>

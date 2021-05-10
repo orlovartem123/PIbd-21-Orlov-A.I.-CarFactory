@@ -13,9 +13,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CarFactoryFileImplement", "
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CarFactoryDatabaseImplement", "CarFactoryDatabaseImplement\CarFactoryDatabaseImplement.csproj", "{57F8CEFE-284D-4205-91F3-84E42533AECC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CarFactoryRestApi", "CarFactoryRestApi\CarFactoryRestApi.csproj", "{B161398D-1E1A-4349-96F9-75298F71FD2D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CarFactoryRestApi", "CarFactoryRestApi\CarFactoryRestApi.csproj", "{B161398D-1E1A-4349-96F9-75298F71FD2D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CarFactoryClientApp", "CarFactoryClientApp\CarFactoryClientApp.csproj", "{BE6576E6-1BFB-4A8E-96CC-93C21B989E88}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CarFactoryClientApp", "CarFactoryClientApp\CarFactoryClientApp.csproj", "{BE6576E6-1BFB-4A8E-96CC-93C21B989E88}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WarehouseEmployeeApp", "WarehouseEmployeeApp\WarehouseEmployeeApp.csproj", "{BDCC27D8-70E8-4CC5-8D4A-382C553D083B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -51,6 +53,10 @@ Global
 		{BE6576E6-1BFB-4A8E-96CC-93C21B989E88}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BE6576E6-1BFB-4A8E-96CC-93C21B989E88}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BE6576E6-1BFB-4A8E-96CC-93C21B989E88}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BDCC27D8-70E8-4CC5-8D4A-382C553D083B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BDCC27D8-70E8-4CC5-8D4A-382C553D083B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BDCC27D8-70E8-4CC5-8D4A-382C553D083B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BDCC27D8-70E8-4CC5-8D4A-382C553D083B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

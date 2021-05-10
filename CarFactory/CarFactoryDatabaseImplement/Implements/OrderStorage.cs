@@ -62,7 +62,8 @@ namespace CarFactoryDatabaseImplement.Implements
                 (model.DateFrom.HasValue && model.DateTo.HasValue && rec.DateCreate.Date >= model.DateFrom.Value.Date && rec.DateCreate.Date <= model.DateTo.Value.Date) ||
                 (model.ClientId.HasValue && rec.ClientId == model.ClientId) ||
                 (model.FreeOrders.HasValue && model.FreeOrders.Value && rec.Status == OrderStatus.Accepted) ||
-                (model.ImplementerId.HasValue && rec.ImplementerId == model.ImplementerId && rec.Status == OrderStatus.Running))
+                (model.ImplementerId.HasValue && rec.ImplementerId == model.ImplementerId && rec.Status == OrderStatus.Running) ||
+                (model.ImplementerId.HasValue && rec.ImplementerId == model.ImplementerId && rec.Status == OrderStatus.NeedMaterials))
                 .Select(CreateModel).ToList();
             }
         }
@@ -98,7 +99,7 @@ namespace CarFactoryDatabaseImplement.Implements
             {
                 var element = context.Orders.Include(rec => rec.Client)
                     .Include(rec => rec.Car)
-                    .Include(rec=>rec.Implementer)
+                    .Include(rec => rec.Implementer)
                     .FirstOrDefault(rec => rec.Id == model.Id);
                 if (element == null)
                 {

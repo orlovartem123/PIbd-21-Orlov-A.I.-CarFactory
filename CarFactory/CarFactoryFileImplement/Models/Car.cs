@@ -2,7 +2,7 @@
 
 namespace CarFactoryFileImplement.Models
 {
-	public class Car
+    public class Car
 	{
 		public int Id { get; set; }
 		public string CarName { get; set; }

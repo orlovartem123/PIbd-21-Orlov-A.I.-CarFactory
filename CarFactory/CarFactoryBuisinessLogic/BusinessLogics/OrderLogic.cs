@@ -11,14 +11,16 @@ namespace CarFactoryBusinessLogic.BusinessLogics
     public class OrderLogic
     {
         private readonly IOrderStorage _orderStorage;
-
+        private readonly IWarehouseStorage _warehouseStorage;
+        private readonly ICarStorage _carStorage;
         private readonly IClientStorage _clientStorage;
-
         private readonly object locker = new object();
 
-        public OrderLogic(IOrderStorage orderStorage, IClientStorage clientStorage)
+        public OrderLogic(IOrderStorage orderStorage, IWarehouseStorage warehouseStorage, ICarStorage carStorage, IClientStorage clientStorage)
         {
             _orderStorage = orderStorage;
+            _warehouseStorage = warehouseStorage;
+            _carStorage = carStorage;
             _clientStorage = clientStorage;
         }
 
@@ -63,6 +65,7 @@ namespace CarFactoryBusinessLogic.BusinessLogics
         {
             lock (locker)
             {
+                OrderStatus status = OrderStatus.Running;
                 var order = _orderStorage.GetElement(new OrderBindingModel
                 {
                     Id = model.OrderId
@@ -74,6 +77,11 @@ namespace CarFactoryBusinessLogic.BusinessLogics
                 if (order.Status != OrderStatus.Accepted)
                 {
                     throw new Exception("Order isn't in the status \"Accepted\"");
+                }
+                var car = _carStorage.GetElement(new CarBindingModel { Id = order.CarId });
+                if (!_warehouseStorage.CheckComponentsCount(order.Count, car.CarComponents))
+                {
+                    status = OrderStatus.NeedMaterials;
                 }
                 if (order.ImplementerId.HasValue)
                 {
@@ -88,7 +96,7 @@ namespace CarFactoryBusinessLogic.BusinessLogics
                     Count = order.Count,
                     Sum = order.Sum,
                     DateCreate = order.DateCreate,
-                    Status = OrderStatus.Running
+                    Status = status
                 });
 
                 MailLogic.MailSendAsync(new MailSendInfo
@@ -110,6 +118,15 @@ namespace CarFactoryBusinessLogic.BusinessLogics
             if (order == null)
             {
                 throw new Exception("Order not found");
+            }
+            if (order.Status == OrderStatus.NeedMaterials)
+            {
+                order.Status = OrderStatus.Running;
+            }
+            var car = _carStorage.GetElement(new CarBindingModel { Id = order.CarId });
+            if (!_warehouseStorage.CheckComponentsCount(order.Count, car.CarComponents))
+            {
+                return;
             }
             if (order.Status != OrderStatus.Running)
             {
