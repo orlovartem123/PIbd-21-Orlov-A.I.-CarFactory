@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace CarFactoryBusinessLogic.ViewModels
 {
-    public class ReportCarComponentViewModel
+    public class ReportCarComponentViewModel 
     {
         public string CarName { get; set; }
         public int TotalCount { get; set; }

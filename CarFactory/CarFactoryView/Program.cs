@@ -99,6 +99,7 @@ namespace CarFactoryView
             currentContainer.RegisterType<IComponentStorage, ComponentStorage>(new HierarchicalLifetimeManager());
             currentContainer.RegisterType<IOrderStorage, OrderStorage>(new HierarchicalLifetimeManager());
             currentContainer.RegisterType<ICarStorage, CarStorage>(new HierarchicalLifetimeManager());
+            currentContainer.RegisterType<IWarehouseStorage, WarehouseStorage>(new HierarchicalLifetimeManager());
             currentContainer.RegisterType<IClientStorage, ClientStorage>(new HierarchicalLifetimeManager());
             currentContainer.RegisterType<IImplementerStorage, ImplementerStorage>(new HierarchicalLifetimeManager());
             currentContainer.RegisterType<IMessageInfoStorage, MessageInfoStorage>(new HierarchicalLifetimeManager());
@@ -107,6 +108,7 @@ namespace CarFactoryView
             currentContainer.RegisterType<ComponentLogic>(new HierarchicalLifetimeManager());
             currentContainer.RegisterType<OrderLogic>(new HierarchicalLifetimeManager());
             currentContainer.RegisterType<CarLogic>(new HierarchicalLifetimeManager());
+            currentContainer.RegisterType<WarehouseLogic>(new HierarchicalLifetimeManager());
             currentContainer.RegisterType<WorkModeling>(new HierarchicalLifetimeManager());
             currentContainer.RegisterType<MailLogic>(new HierarchicalLifetimeManager());
             currentContainer.RegisterType<ImplementerLogic>(new HierarchicalLifetimeManager());

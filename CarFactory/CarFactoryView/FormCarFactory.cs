@@ -60,6 +60,12 @@ namespace CarFactoryView
             form.ShowDialog();
         }
 
+        private void WarehousesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var form = Container.Resolve<FormWarehouses>();
+            form.ShowDialog();
+        }
+
         private void ButtonCreateOrder_Click(object sender, EventArgs e)
         {
             var form = Container.Resolve<FormCreateOrder>();
@@ -114,6 +120,40 @@ namespace CarFactoryView
         private void OrdersListToolStripMenuItem_Click(object sender, EventArgs e)
         {
             var form = Container.Resolve<FormReportOrders>();
+            form.ShowDialog();
+        }
+
+        private void addComponentsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var form = Container.Resolve<FormAddComponentsToWarehouse>();
+            form.ShowDialog();
+        }
+
+        private void warehousesListToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            using (var dialog = new SaveFileDialog { Filter = "docx|*.docx" })
+            {
+                if (dialog.ShowDialog() == DialogResult.OK)
+                {
+                    report.SaveWarehousesToWordFile(new ReportBindingModel
+                    {
+                        FileName = dialog.FileName
+                    });
+                    MessageBox.Show("Done", "Success", MessageBoxButtons.OK,
+                    MessageBoxIcon.Information);
+                }
+            }
+        }
+
+        private void componentsByWarehousesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var form = Container.Resolve<FormReportComponentsByWarehouses>();
+            form.ShowDialog();
+        }
+
+        private void ordersByDatesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var form = Container.Resolve<FormReportOrdersByDates>();
             form.ShowDialog();
         }
 

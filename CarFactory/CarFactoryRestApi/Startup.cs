@@ -28,10 +28,15 @@ namespace CarFactoryRestApi
             services.AddTransient<IOrderStorage, OrderStorage>();
             services.AddTransient<ICarStorage, CarStorage>();
             services.AddTransient<IMessageInfoStorage, MessageInfoStorage>();
-            services.AddTransient<OrderLogic>();
+            services.AddTransient<IWarehouseStorage, WarehouseStorage>();
+            services.AddTransient<IComponentStorage, ComponentStorage>();
             services.AddTransient<ClientLogic>();
             services.AddTransient<CarLogic>();
             services.AddTransient<MailLogic>();
+            services.AddTransient<OrderLogic>();
+            services.AddTransient<WarehouseLogic>();
+            services.AddTransient<ComponentLogic>();
+
             MailLogic.MailConfig(new MailConfig
             {
                 SmtpClientHost = Configuration["SmtpClientHost"],

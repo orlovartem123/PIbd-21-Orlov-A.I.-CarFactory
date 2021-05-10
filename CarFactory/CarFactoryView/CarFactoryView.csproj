@@ -35,6 +35,9 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'ClientStart|AnyCPU'">
+    <OutputPath>bin\ClientStart\</OutputPath>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="BouncyCastle.Crypto, Version=1.8.10.0, Culture=neutral, PublicKeyToken=0e99375e54769942, processorArchitecture=MSIL">
       <HintPath>..\packages\Portable.BouncyCastle.1.8.10\lib\net40\BouncyCastle.Crypto.dll</HintPath>
@@ -219,6 +222,12 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="FormAddComponentsToWarehouse.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormAddComponentsToWarehouse.Designer.cs">
+      <DependentUpon>FormAddComponentsToWarehouse.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormCar.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -261,6 +270,12 @@
     <Compile Include="FormImplementers.Designer.cs">
       <DependentUpon>FormImplementers.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormReportComponentsByWarehouses.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormReportComponentsByWarehouses.Designer.cs">
+      <DependentUpon>FormReportComponentsByWarehouses.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormMails.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -297,9 +312,30 @@
     <Compile Include="FormCreateOrder.Designer.cs">
       <DependentUpon>FormCreateOrder.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormReportOrdersByDates.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormReportOrdersByDates.Designer.cs">
+      <DependentUpon>FormReportOrdersByDates.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormWarehouse.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormWarehouse.Designer.cs">
+      <DependentUpon>FormWarehouse.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormWarehouses.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormWarehouses.Designer.cs">
+      <DependentUpon>FormWarehouses.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SqlServerTypes\Loader.cs" />
+    <EmbeddedResource Include="FormAddComponentsToWarehouse.resx">
+      <DependentUpon>FormAddComponentsToWarehouse.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FormCar.resx">
       <DependentUpon>FormCar.cs</DependentUpon>
       <SubType>Designer</SubType>
@@ -313,6 +349,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FormCars.resx">
       <DependentUpon>FormCars.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormReportComponentsByWarehouses.resx">
+      <DependentUpon>FormReportComponentsByWarehouses.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormClients.resx">
       <DependentUpon>FormClients.cs</DependentUpon>
@@ -341,6 +380,15 @@
     <EmbeddedResource Include="FormCreateOrder.resx">
       <DependentUpon>FormCreateOrder.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FormReportOrdersByDates.resx">
+      <DependentUpon>FormReportOrdersByDates.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormWarehouse.resx">
+      <DependentUpon>FormWarehouse.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormWarehouses.resx">
+      <DependentUpon>FormWarehouses.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -351,7 +399,9 @@
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
     <EmbeddedResource Include="Report.rdlc" />
+    <EmbeddedResource Include="ReportOrdersByDates.rdlc" />
     <None Include="packages.config" />
+    <None Include="Properties\DataSources\CarFactoryBusinessLogic.ViewModels.ReportOrderByDatesViewModel.datasource" />
     <None Include="Properties\DataSources\CarFactoryBusinessLogic.ViewModels.ReportOrdersViewModel.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

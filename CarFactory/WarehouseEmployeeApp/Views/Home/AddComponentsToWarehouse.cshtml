@@ -1,0 +1,39 @@
+﻿@{
+    ViewData["Title"] = "Add components";
+}
+<div class="text-center">
+    <h2 class="display-4">Add components</h2>
+</div>
+<form class="container-fluid" method="post">
+    <div class="form-group">
+        <div class="row">
+            <div class="col-4">Warehouse:</div>
+            <div class="col-8">
+                <select id="warehouseId" name="warehouseId" class="form-control" asp-items="@(new SelectList(@ViewBag.Warehouse,"Id", "WarehouseName"))">
+                </select>
+            </div>
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="row">
+            <div class="col-4">Component:</div>
+            <div class="col-8">
+                <select id="componentId" name="componentId" class="form-control" asp-items="@(new SelectList(@ViewBag.Component,"Id", "ComponentName"))">
+                </select>
+            </div>
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="row">
+            <div class="col-4">Count:</div>
+            <div class="col-8"><input type="text" name="count" id="count" /></div>
+        </div>
+    </div>
+    <div class="form-group row">
+        <div class="col-lg-12">
+            <button type="submit" style="min-width: 100px" class="btn btn-sm btn-light">
+                Add
+            </button>
+        </div>
+    </div>
+</form>

@@ -33,13 +33,14 @@ namespace CarFactoryClientApp.Controllers
             return View(Program.Client);
         }
 
-        public IActionResult Mail()
+        public IActionResult Mail(int page = 1)
         {
             if (Program.Client == null)
             {
                 return Redirect("~/Home/Enter");
             }
-            var model = APIClient.GetRequest<List<MessageInfoViewModel>>($"api/client/getmessages?clientId={Program.Client.Id}");
+            var temp = APIClient.GetRequest<(List<MessageInfoViewModel> list, int maxPage)>($"api/client/getmessages?clientId={Program.Client.Id}&page={page}");
+            (List<MessageInfoViewModel>, int, int) model = (temp.list, temp.maxPage, page);
             return View(model);
         }
 

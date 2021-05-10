@@ -2,6 +2,7 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
+    <Configurations>Debug;Release</Configurations>
   </PropertyGroup>
 
   <ItemGroup>
@@ -9,6 +10,8 @@
     <Compile Remove="Migrations\20210401134130_add-clients.Designer.cs" />
     <Compile Remove="Migrations\20210401134342_add-clients.cs" />
     <Compile Remove="Migrations\20210401134342_add-clients.Designer.cs" />
+    <Compile Remove="Migrations\20210429185325_addedClients.cs" />
+    <Compile Remove="Migrations\20210429185325_addedClients.Designer.cs" />
   </ItemGroup>
 
   <ItemGroup>

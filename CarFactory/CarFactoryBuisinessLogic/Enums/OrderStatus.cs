@@ -8,6 +8,8 @@
 
         Ready = 2,
 
-        Paid = 3
+        Paid = 3,
+
+        NeedMaterials = 4
     }
 }

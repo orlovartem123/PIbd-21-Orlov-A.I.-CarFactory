@@ -1,5 +1,5 @@
 ﻿@using CarFactoryBusinessLogic.ViewModels
-@model List<MessageInfoViewModel>
+@model (List<MessageInfoViewModel> list, int maxPage, int page)
 @{
     ViewData["Title"] = "Mail";
 }
@@ -12,7 +12,7 @@
             <thead>
                 <tr>
                     <th>
-                        SenderName
+                        Sender Name
                     </th>
                     <th>
                         Date delivery
@@ -26,7 +26,7 @@
                 </tr>
             </thead>
             <tbody>
-                @foreach (var item in Model)
+                @foreach (var item in Model.list)
                 {
                     <tr>
                         <td>
@@ -46,4 +46,17 @@
             </tbody>
         </table>
     }
+    <div style="display: flex; justify-content: space-between; max-width: 100px;">
+        @{
+            if ((Model.page - 1) >= 1)
+            {
+                <a asp-action="Mail" asp-route-page="@(Model.page-1)">Prev</a>
+            }
+            if ((Model.page + 1) <= Model.maxPage)
+            {
+                <a asp-action="Mail" asp-route-page="@(Model.page+1)">Next</a>
+            }
+        }
+    </div>
+
 </div>

@@ -6,7 +6,7 @@ using Unity;
 
 namespace CarFactoryView
 {
-	public partial class FormComponent : Form
+    public partial class FormComponent : Form
 	{
 		[Dependency]
 		public new IUnityContainer Container { get; set; }
