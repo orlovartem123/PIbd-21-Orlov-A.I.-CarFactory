@@ -1,7 +1,5 @@
 ﻿using CarFactoryBusinessLogic.BusinessLogics;
-using CarFactoryBusinessLogic.ViewModels;
 using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
 
@@ -34,9 +32,12 @@ namespace CarFactoryView
         private void LoadData()
         {
             var list = logic.Read(null).Skip(currentPage * mailsOnPage).Take(mailsOnPage).ToList();
-            if (list != null)
+            try
             {
-                Program.ConfigGrid(logic.Read(null), dataGridView);
+                if (list != null)
+                {
+                    Program.ConfigGrid(logic.Read(null), dataGridView);
+                }
             }
             catch (Exception ex)
             {

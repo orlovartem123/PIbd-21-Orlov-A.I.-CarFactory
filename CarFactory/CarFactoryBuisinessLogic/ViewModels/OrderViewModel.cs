@@ -11,7 +11,7 @@ namespace CarFactoryBusinessLogic.ViewModels
     [DataContract]
     public class OrderViewModel
     {
-        [Column(title: "Number", width: 100)]
+        [Column(title: "Number", gridViewAutoSize: GridViewAutoSize.Fill)]
         [DataMember]
         public int Id { get; set; }
 
@@ -24,7 +24,7 @@ namespace CarFactoryBusinessLogic.ViewModels
         [DataMember]
         public int? ImplementerId { get; set; }
 
-        [Column(title: "Client", width: 150)]
+        [Column(title: "Client", gridViewAutoSize: GridViewAutoSize.Fill)]
         [DataMember]
         public string ClientFIO { get; set; }
 
@@ -48,11 +48,11 @@ namespace CarFactoryBusinessLogic.ViewModels
         [DataMember]
         public OrderStatus Status { get; set; }
 
-        [Column(title: "Creation date", width: 100)]
+        [Column(title: "Creation date", width: 100, format: "R")]
         [DataMember]
         public DateTime DateCreate { get; set; }
 
-        [Column(title: "Complition date", width: 100)]
+        [Column(title: "Complition date", gridViewAutoSize: GridViewAutoSize.Fill, format: "R")]
         [DataMember]
         public DateTime? DateImplement { get; set; }
     }

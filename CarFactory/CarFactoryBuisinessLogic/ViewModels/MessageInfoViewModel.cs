@@ -15,7 +15,7 @@ namespace CarFactoryBusinessLogic.ViewModels
         [DataMember]
         public string SenderName { get; set; }
 
-        [Column(title: "Delivery date", width: 100)]
+        [Column(title: "Delivery date", width: 100,format: "D")]
         [DataMember]
         public DateTime DateDelivery { get; set; }
 
