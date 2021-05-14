@@ -22,7 +22,7 @@ namespace CarFactoryRestApi.Controllers
 
         private readonly int _passwordMinLength = 10;
 
-        private readonly int mailsOnPage = 4;
+        private readonly int mailsOnPage = 2;
 
         public ClientController(ClientLogic logic, MailLogic logicM)
         {

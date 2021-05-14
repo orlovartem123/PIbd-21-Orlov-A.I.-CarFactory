@@ -23,7 +23,11 @@ namespace CarFactoryView
             if (mailsOnPage < 1) { mailsOnPage = 5; }
             maxPage = (logic.Read(null).Count() - 1) / mailsOnPage;
             InitializeComponent();
-            if (maxPage != 0) { buttonNext.Enabled = true; }
+            if (maxPage != 0) 
+            {
+                buttonNext.Enabled = true;
+                buttonNext.Text = "Next " + (currentPage + 2);
+            }
         }
 
         private void FormMails_Load(object sender, EventArgs e)
@@ -46,8 +50,18 @@ namespace CarFactoryView
             if ((currentPage + 1) <= maxPage)
             {
                 currentPage++;
+                textBoxPage.Text = (currentPage+1).ToString();
                 buttonPrev.Enabled = true;
-                if (maxPage <= currentPage) { buttonNext.Enabled = false; }
+                buttonPrev.Text = "Prev " + (currentPage);
+                if (maxPage <= currentPage)
+                {
+                    buttonNext.Enabled = false;
+                    buttonNext.Text = "Next";
+                }
+                else
+                {
+                    buttonNext.Text = "Next " + (currentPage + 2);
+                }
                 LoadData();
             }
         }
@@ -57,8 +71,18 @@ namespace CarFactoryView
             if ((currentPage - 1) >= 0)
             {
                 currentPage--;
+                textBoxPage.Text = (currentPage+1).ToString();
                 buttonNext.Enabled = true;
-                if (currentPage == 0) { buttonPrev.Enabled = false; }
+                buttonNext.Text = "Next " + (currentPage + 2);
+                if (currentPage == 0)
+                {
+                    buttonPrev.Enabled = false;
+                    buttonPrev.Text = "Prev";
+                }
+                else
+                {
+                    buttonPrev.Text = "Prev " + (currentPage);
+                }
                 LoadData();
             }
         }
