@@ -1,6 +1,8 @@
 ﻿using CarFactoryBusinessLogic.BusinessLogics;
+using CarFactoryBusinessLogic.ViewModels;
 using System;
 using System.Linq;
+using System.Reflection;
 using System.Windows.Forms;
 
 namespace CarFactoryView
@@ -36,7 +38,9 @@ namespace CarFactoryView
             {
                 if (list != null)
                 {
-                    Program.ConfigGrid(logic.Read(null), dataGridView);
+                    var method = typeof(Program).GetMethod("ConfigGrid");
+                    MethodInfo generic = method.MakeGenericMethod(typeof(MessageInfoViewModel));
+                    generic.Invoke(this, new object[] { logic.Read(null), dataGridView });
                 }
             }
             catch (Exception ex)
