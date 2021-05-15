@@ -1,5 +1,5 @@
 ﻿@using CarFactoryBusinessLogic.ViewModels
-@model (List<MessageInfoViewModel> list, int maxPage, int page)
+@model (List<MessageInfoViewModel> list, bool hasNext, int page)
 @{
     ViewData["Title"] = "Mail";
 }
@@ -53,7 +53,7 @@
                 <a asp-action="Mail" asp-route-page="@(Model.page-1)">Prev @(Model.page-1)</a>
             }
             <span style="font-weight: bold;">@(Model.page)</span>
-            if ((Model.page + 1) <= Model.maxPage)
+            if (Model.hasNext)
             {
                 <a asp-action="Mail" asp-route-page="@(Model.page+1)">Next @(Model.page+1)</a>
             }

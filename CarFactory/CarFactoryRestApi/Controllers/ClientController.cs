@@ -39,11 +39,11 @@ namespace CarFactoryRestApi.Controllers
         public void Register(ClientBindingModel model) => _logic.CreateOrUpdate(model);
 
         [HttpGet]
-        public (List<MessageInfoViewModel>, int) GetMessages(int clientId, int page)
+        public (List<MessageInfoViewModel>, bool) GetMessages(int clientId, int page)
         {
-            var list = _logicM.Read(new MessageInfoBindingModel { ClientId = clientId }).ToList();
-            var maxPage = ((list.Count() - 1) / mailsOnPage) + 1;
-            return (list.Skip((page - 1) * mailsOnPage).Take(mailsOnPage).ToList(), maxPage);
+            var list = _logicM.Read(new MessageInfoBindingModel { ClientId = clientId, ToSkip = (page - 1) * mailsOnPage, ToTake = mailsOnPage + 1 }).ToList();
+            var hasNext = !(list.Count() <= mailsOnPage);
+            return (list.Take(mailsOnPage).ToList(), hasNext);
         }
 
         [HttpPost]
