@@ -11,7 +11,7 @@ namespace CarFactoryBusinessLogic.ViewModels
     [DataContract]
     public class OrderViewModel
     {
-        [Column(title: "Number", width: 100)]
+        [Column(title: "Number", gridViewAutoSize: GridViewAutoSize.Fill)]
         [DataMember]
         public int Id { get; set; }
 
@@ -24,7 +24,7 @@ namespace CarFactoryBusinessLogic.ViewModels
         [DataMember]
         public int? ImplementerId { get; set; }
 
-        [Column(title: "Client", width: 150)]
+        [Column(title: "Client", gridViewAutoSize: GridViewAutoSize.Fill)]
         [DataMember]
         public string ClientFIO { get; set; }
 
@@ -32,27 +32,27 @@ namespace CarFactoryBusinessLogic.ViewModels
         [DataMember]
         public string CarName { get; set; }
 
-        [Column(title: "Implementer", width: 150)]
+        [Column(title: "Implementer", gridViewAutoSize: GridViewAutoSize.Fill)]
         [DataMember]
         public string ImplementerFIO { get; set; }
 
-        [Column(title: "Quantity", width: 100)]
+        [Column(title: "Quantity", gridViewAutoSize: GridViewAutoSize.Fill)]
         [DataMember]
         public int Count { get; set; }
 
-        [Column(title: "Sum", width: 50)]
+        [Column(title: "Sum", gridViewAutoSize: GridViewAutoSize.Fill)]
         [DataMember]
         public decimal Sum { get; set; }
 
-        [Column(title: "Status", width: 100)]
+        [Column(title: "Status", gridViewAutoSize: GridViewAutoSize.Fill)]
         [DataMember]
         public OrderStatus Status { get; set; }
 
-        [Column(title: "Creation date", width: 100)]
+        [Column(title: "Creation date", gridViewAutoSize: GridViewAutoSize.Fill)]
         [DataMember]
         public DateTime DateCreate { get; set; }
 
-        [Column(title: "Complition date", width: 100)]
+        [Column(title: "Complition date", gridViewAutoSize: GridViewAutoSize.Fill)]
         [DataMember]
         public DateTime? DateImplement { get; set; }
     }
