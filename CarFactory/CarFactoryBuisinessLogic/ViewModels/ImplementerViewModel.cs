@@ -1,18 +1,19 @@
-﻿using System.ComponentModel;
+﻿using CarFactoryBusinessLogic.Attributes;
 
 namespace CarFactoryBusinessLogic.ViewModels
 {
     public class ImplementerViewModel
     {
+        [Column(title: "Number", width: 100)]
         public int Id { get; set; }
 
-        [DisplayName("Implementer name")]
+        [Column(title: "Car", gridViewAutoSize: GridViewAutoSize.Fill)]
         public string ImplementerFIO { get; set; }
 
-        [DisplayName("Time to order")]
+        [Column(title: "Time to work", width: 100)]
         public int WorkingTime { get; set; }
 
-        [DisplayName("Time to pause")]
+        [Column(title: "Time to pause", width: 100)]
         public int PauseTime { get; set; }
     }
 }

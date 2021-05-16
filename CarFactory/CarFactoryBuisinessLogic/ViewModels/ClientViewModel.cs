@@ -1,4 +1,4 @@
-﻿using System.ComponentModel;
+﻿using CarFactoryBusinessLogic.Attributes;
 using System.Runtime.Serialization;
 
 namespace CarFactoryBusinessLogic.ViewModels
@@ -6,19 +6,20 @@ namespace CarFactoryBusinessLogic.ViewModels
     [DataContract]
     public class ClientViewModel
     {
+        [Column(title: "Number", width: 100)]
         [DataMember]
         public int Id { get; set; }
 
         [DataMember]
-        [DisplayName("Full Name")]
+        [Column(title: "Full name", width: 150)]
         public string ClientFIO { get; set; }
 
         [DataMember]
-        [DisplayName("Email")]
+        [Column(title: "Email", gridViewAutoSize: GridViewAutoSize.Fill)]
         public string Email { get; set; }
 
         [DataMember]
-        [DisplayName("Password")]
+        [Column(title: "Password", gridViewAutoSize: GridViewAutoSize.Fill)]
         public string Password { get; set; }
     }
 }

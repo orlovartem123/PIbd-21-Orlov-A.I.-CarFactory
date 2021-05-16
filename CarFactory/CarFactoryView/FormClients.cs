@@ -1,6 +1,8 @@
 ﻿using CarFactoryBusinessLogic.BindingModels;
 using CarFactoryBusinessLogic.BusinessLogics;
+using CarFactoryBusinessLogic.ViewModels;
 using System;
+using System.Reflection;
 using System.Windows.Forms;
 using Unity;
 
@@ -28,8 +30,9 @@ namespace CarFactoryView
         {
             try
             {
-                dataGridView.DataSource = logic.Read(null);
-                dataGridView.Columns["Id"].Visible = false;
+                var method = typeof(Program).GetMethod("ConfigGrid");
+                MethodInfo generic = method.MakeGenericMethod(typeof(ClientViewModel));
+                generic.Invoke(this, new object[] { logic.Read(null), dataGridView });
             }
             catch (Exception ex)
             {

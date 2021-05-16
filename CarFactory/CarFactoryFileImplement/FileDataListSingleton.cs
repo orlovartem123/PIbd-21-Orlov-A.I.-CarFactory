@@ -361,7 +361,7 @@ namespace CarFactoryFileImplement
                 XDocument xDocument = new XDocument(xElement);
                 xDocument.Save(MessageFileName);
             }
-        }        
+        }
 
         private void SaveWarehouses()
         {
