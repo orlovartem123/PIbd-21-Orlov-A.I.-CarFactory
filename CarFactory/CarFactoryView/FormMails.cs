@@ -1,5 +1,6 @@
 ﻿using CarFactoryBusinessLogic.BindingModels;
 using CarFactoryBusinessLogic.BusinessLogics;
+using CarFactoryBusinessLogic.ViewModels;
 using System;
 using System.Linq;
 using System.Reflection;
@@ -31,22 +32,28 @@ namespace CarFactoryView
 
         private void LoadData()
         {
-            var list = logic.Read(new MessageInfoBindingModel { ToSkip = currentPage * mailsOnPage, ToTake = mailsOnPage + 1 });
-            hasNext = !(list.Count() <= mailsOnPage);
-            if (hasNext)
+            try
             {
-                buttonNext.Text = "Next " + (currentPage + 2);
-                buttonNext.Enabled = true;
+                var list = logic.Read(new MessageInfoBindingModel { ToSkip = currentPage * mailsOnPage, ToTake = mailsOnPage + 1 });
+                var method = typeof(Program).GetMethod("ConfigGrid");
+                MethodInfo generic = method.MakeGenericMethod(typeof(MessageInfoViewModel));
+                hasNext = !(list.Count() <= mailsOnPage);
+                if (hasNext)
+                {
+                    buttonNext.Text = "Next " + (currentPage + 2);
+                    buttonNext.Enabled = true;
+                }
+                else
+                {
+                    buttonNext.Text = "Next";
+                    buttonNext.Enabled = false;
+                }
+                generic.Invoke(this, new object[] { list.Take(mailsOnPage).ToList(), dataGridView });
             }
-            else
+            catch (Exception ex)
             {
-                buttonNext.Text = "Next";
-                buttonNext.Enabled = false;
-            }
-            if (list != null)
-            {
-                dataGridView.DataSource = list.Take(mailsOnPage).ToList();
-                dataGridView.Columns[0].Visible = false;
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK,
+               MessageBoxIcon.Error);
             }
         }
 
