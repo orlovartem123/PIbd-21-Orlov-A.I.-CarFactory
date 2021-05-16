@@ -17,7 +17,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CarFactoryRestApi", "CarFac
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CarFactoryClientApp", "CarFactoryClientApp\CarFactoryClientApp.csproj", "{BE6576E6-1BFB-4A8E-96CC-93C21B989E88}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WarehouseEmployeeApp", "WarehouseEmployeeApp\WarehouseEmployeeApp.csproj", "{BDCC27D8-70E8-4CC5-8D4A-382C553D083B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WarehouseEmployeeApp", "WarehouseEmployeeApp\WarehouseEmployeeApp.csproj", "{BDCC27D8-70E8-4CC5-8D4A-382C553D083B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

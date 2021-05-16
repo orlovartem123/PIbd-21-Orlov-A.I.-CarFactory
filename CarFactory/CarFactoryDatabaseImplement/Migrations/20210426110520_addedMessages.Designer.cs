@@ -4,14 +4,16 @@ using CarFactoryDatabaseImplement;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace CarFactoryDatabaseImplement.Migrations
 {
     [DbContext(typeof(CarFactoryDbContext))]
-    partial class CarFactoryDbContextModelSnapshot : ModelSnapshot
+    [Migration("20210426110520_addedMessages")]
+    partial class addedMessages
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -61,6 +63,30 @@ namespace CarFactoryDatabaseImplement.Migrations
                     b.HasIndex("ComponentId");
 
                     b.ToTable("CarComponents");
+                });
+
+            modelBuilder.Entity("CarFactoryDatabaseImplement.Models.Client", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("ClientFIO")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Email")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Password")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Clients");
                 });
 
             modelBuilder.Entity("CarFactoryDatabaseImplement.Models.Component", b =>
@@ -138,6 +164,9 @@ namespace CarFactoryDatabaseImplement.Migrations
                     b.Property<int>("CarId")
                         .HasColumnType("int");
 
+                    b.Property<int>("ClientId")
+                        .HasColumnType("int");
+
                     b.Property<int>("Count")
                         .HasColumnType("int");
 
@@ -165,54 +194,6 @@ namespace CarFactoryDatabaseImplement.Migrations
                     b.HasIndex("ImplementerId");
 
                     b.ToTable("Orders");
-                });
-
-            modelBuilder.Entity("CarFactoryDatabaseImplement.Models.Warehouse", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<DateTime>("DateCreate")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("ManagerFullName")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("WarehouseName")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Warehouses");
-                });
-
-            modelBuilder.Entity("CarFactoryDatabaseImplement.Models.WarehouseComponent", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<int>("ComponentId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("Count")
-                        .HasColumnType("int");
-
-                    b.Property<int>("WarehouseId")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("ComponentId");
-
-                    b.HasIndex("WarehouseId");
-
-                    b.ToTable("WarehouseComponents");
                 });
 
             modelBuilder.Entity("CarFactoryDatabaseImplement.Models.CarComponent", b =>
@@ -244,19 +225,10 @@ namespace CarFactoryDatabaseImplement.Migrations
                         .HasForeignKey("CarId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-                });
 
-            modelBuilder.Entity("CarFactoryDatabaseImplement.Models.WarehouseComponent", b =>
-                {
-                    b.HasOne("CarFactoryDatabaseImplement.Models.Component", "Component")
-                        .WithMany("WarehouseComponents")
-                        .HasForeignKey("ComponentId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("CarFactoryDatabaseImplement.Models.Warehouse", "Warehouse")
-                        .WithMany("WarehouseComponents")
-                        .HasForeignKey("WarehouseId")
+                    b.HasOne("CarFactoryDatabaseImplement.Models.Client", "Client")
+                        .WithMany("Orders")
+                        .HasForeignKey("ClientId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 

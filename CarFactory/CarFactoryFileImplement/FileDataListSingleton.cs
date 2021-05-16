@@ -16,12 +16,15 @@ namespace CarFactoryFileImplement
         private readonly string CarFileName = "Car.xml";
         private readonly string ClientFileName = "Client.xml";
         private readonly string ImplementerFileName = "Implementer.xml";
+        private readonly string MessageFileName = "Message.xml";
         private readonly string WarehouseFileName = "Warehouse.xml";
+
         public List<Component> Components { get; set; }
         public List<Order> Orders { get; set; }
         public List<Car> Cars { get; set; }
         public List<Client> Clients { get; set; }
         public List<Implementer> Implementers { get; set; }
+        public List<MessageInfo> Messages { get; set; }
         public List<Warehouse> Warehouses { get; set; }
 
         private FileDataListSingleton()
@@ -31,6 +34,7 @@ namespace CarFactoryFileImplement
             Cars = LoadCars();
             Clients = LoadClients();
             Implementers = LoadImplementers();
+            Messages = LoadMessages();
             Warehouses = LoadWarehouses();
         }
 
@@ -50,6 +54,7 @@ namespace CarFactoryFileImplement
             SaveCars();
             SaveClients();
             SaveImplementers();
+            SaveMessages();
             SaveWarehouses();
         }
 
@@ -184,8 +189,8 @@ namespace CarFactoryFileImplement
                     {
                         Id = Convert.ToInt32(elem.Attribute("Id").Value),
                         ClientFIO = elem.Element("ClientFIO").Value,
-                        Email=elem.Element("Email").Value,
-                        Password=elem.Element("Password").Value
+                        Email = elem.Element("Email").Value,
+                        Password = elem.Element("Password").Value
                     });
                 }
             }
@@ -207,6 +212,29 @@ namespace CarFactoryFileImplement
                         ImplementerFIO = elem.Element("ClientFIO").Value,
                         WorkingTime = Convert.ToInt32(elem.Element("WorkingTime").Value),
                         PauseTime = Convert.ToInt32(elem.Element("PauseTime").Value)
+                    });
+                }
+            }
+            return list;
+        }
+
+        private List<MessageInfo> LoadMessages()
+        {
+            var list = new List<MessageInfo>();
+            if (File.Exists(OrderFileName))
+            {
+                XDocument xDocument = XDocument.Load(MessageFileName);
+                var xElements = xDocument.Root.Elements("Message").ToList();
+                foreach (var elem in xElements)
+                {
+                    list.Add(new MessageInfo
+                    {
+                        MessageId = elem.Element("MessageId")?.Value,
+                        Body = elem.Element("Body")?.Value,
+                        ClientId = Convert.ToInt32(elem.Element("ClientId")?.Value),
+                        Subject = elem.Element("Subject")?.Value,
+                        SenderName = elem.Element("SenderName")?.Value,
+                        DateDelivery = Convert.ToDateTime(elem.Element("DateDelivery")?.Value)
                     });
                 }
             }
@@ -313,7 +341,28 @@ namespace CarFactoryFileImplement
                 xDocument.Save(ImplementerFileName);
             }
         }
-        
+
+        private void SaveMessages()
+        {
+            // прописать логику
+            if (Messages != null)
+            {
+                var xElement = new XElement("Messages");
+                foreach (var msg in Messages)
+                {
+                    xElement.Add(new XElement("Message",
+                    new XAttribute("MessageId", msg.MessageId),
+                    new XElement("Body", msg.Body),
+                    new XElement("DateDelivery", msg.DateDelivery),
+                    new XElement("SenderName", msg.SenderName),
+                    new XElement("Subject", msg.Subject),
+                    new XElement("ClientId", msg.ClientId)));
+                }
+                XDocument xDocument = new XDocument(xElement);
+                xDocument.Save(MessageFileName);
+            }
+        }        
+
         private void SaveWarehouses()
         {
             if (Warehouses != null)
