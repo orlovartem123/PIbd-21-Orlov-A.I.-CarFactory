@@ -8,7 +8,6 @@ namespace CarFactoryView
 {
 	public partial class FormComponent : Form
 	{
-
 		[Dependency]
 		public new IUnityContainer Container { get; set; }
 
@@ -73,7 +72,6 @@ namespace CarFactoryView
 			DialogResult = DialogResult.Cancel;
 			Close();
 		}
-
 	}
 }
 
