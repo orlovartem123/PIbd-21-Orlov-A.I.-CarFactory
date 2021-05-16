@@ -32,23 +32,23 @@ namespace CarFactoryBusinessLogic.ViewModels
         [DataMember]
         public string CarName { get; set; }
 
-        [Column(title: "Implementer", width: 150)]
+        [Column(title: "Implementer", gridViewAutoSize: GridViewAutoSize.Fill)]
         [DataMember]
         public string ImplementerFIO { get; set; }
 
-        [Column(title: "Quantity", width: 100)]
+        [Column(title: "Quantity", gridViewAutoSize: GridViewAutoSize.Fill)]
         [DataMember]
         public int Count { get; set; }
 
-        [Column(title: "Sum", width: 50)]
+        [Column(title: "Sum", gridViewAutoSize: GridViewAutoSize.Fill)]
         [DataMember]
         public decimal Sum { get; set; }
 
-        [Column(title: "Status", width: 100)]
+        [Column(title: "Status", gridViewAutoSize: GridViewAutoSize.Fill)]
         [DataMember]
         public OrderStatus Status { get; set; }
 
-        [Column(title: "Creation date", width: 100, format: "R")]
+        [Column(title: "Creation date", gridViewAutoSize: GridViewAutoSize.Fill, format: "R")]
         [DataMember]
         public DateTime DateCreate { get; set; }
 
@@ -57,6 +57,3 @@ namespace CarFactoryBusinessLogic.ViewModels
         public DateTime? DateImplement { get; set; }
     }
 }
-
-
-
