@@ -14,14 +14,7 @@ namespace CarFactoryDatabaseImplement.Implements
             using (var context = new CarFactoryDbContext())
             {
                 return context.Messages
-                .Select(rec => new MessageInfoViewModel
-                {
-                    MessageId = rec.MessageId,
-                    SenderName = rec.SenderName,
-                    DateDelivery = rec.DateDelivery,
-                    Subject = rec.Subject,
-                    Body = rec.Body
-                })
+                .Select(CreateModel)
                .ToList();
             }
         }
@@ -34,18 +27,18 @@ namespace CarFactoryDatabaseImplement.Implements
             }
             using (var context = new CarFactoryDbContext())
             {
+                if (model.ToSkip.HasValue && model.ToTake.HasValue && !model.ClientId.HasValue)
+                {
+                    return context.Messages.Skip((int)model.ToSkip).Take((int)model.ToTake)
+                    .Select(CreateModel).ToList();
+                }
                 return context.Messages
                 .Where(rec => (model.ClientId.HasValue && rec.ClientId == model.ClientId) ||
                 (!model.ClientId.HasValue && rec.DateDelivery.Date == model.DateDelivery.Date))
-                .Select(rec => new MessageInfoViewModel
-                {
-                    MessageId = rec.MessageId,
-                    SenderName = rec.SenderName,
-                    DateDelivery = rec.DateDelivery,
-                    Subject = rec.Subject,
-                    Body = rec.Body
-                })
-               .ToList();
+                .Skip(model.ToSkip ?? 0)
+                .Take(model.ToTake ?? context.Messages.Count())
+                .Select(CreateModel)
+                .ToList();
             }
         }
 
@@ -69,6 +62,18 @@ namespace CarFactoryDatabaseImplement.Implements
                 });
                 context.SaveChanges();
             }
+        }
+
+        private MessageInfoViewModel CreateModel(MessageInfo model)
+        {
+            return new MessageInfoViewModel
+            {
+                MessageId = model.MessageId,
+                SenderName = model.SenderName,
+                DateDelivery = model.DateDelivery,
+                Subject = model.Subject,
+                Body = model.Body
+            };
         }
     }
 }

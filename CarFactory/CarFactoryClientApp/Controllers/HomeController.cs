@@ -39,8 +39,8 @@ namespace CarFactoryClientApp.Controllers
             {
                 return Redirect("~/Home/Enter");
             }
-            var temp = APIClient.GetRequest<(List<MessageInfoViewModel> list, int maxPage)>($"api/client/getmessages?clientId={Program.Client.Id}&page={page}");
-            (List<MessageInfoViewModel>, int, int) model = (temp.list, temp.maxPage, page);
+            var temp = APIClient.GetRequest<(List<MessageInfoViewModel> list, bool hasNext)>($"api/client/getmessages?clientId={Program.Client.Id}&page={page}");
+            (List<MessageInfoViewModel>, bool, int) model = (temp.list, temp.hasNext, page);
             return View(model);
         }
 

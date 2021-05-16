@@ -32,6 +32,7 @@ namespace CarFactoryView
             this.dataGridView = new System.Windows.Forms.DataGridView();
             this.buttonPrev = new System.Windows.Forms.Button();
             this.buttonNext = new System.Windows.Forms.Button();
+            this.textBoxPage = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).BeginInit();
             this.SuspendLayout();
             // 
@@ -52,7 +53,7 @@ namespace CarFactoryView
             // buttonPrev
             // 
             this.buttonPrev.Enabled = false;
-            this.buttonPrev.Location = new System.Drawing.Point(632, 415);
+            this.buttonPrev.Location = new System.Drawing.Point(197, 415);
             this.buttonPrev.Name = "buttonPrev";
             this.buttonPrev.Size = new System.Drawing.Size(75, 23);
             this.buttonPrev.TabIndex = 1;
@@ -63,19 +64,29 @@ namespace CarFactoryView
             // buttonNext
             // 
             this.buttonNext.Enabled = false;
-            this.buttonNext.Location = new System.Drawing.Point(713, 415);
+            this.buttonNext.Location = new System.Drawing.Point(317, 416);
             this.buttonNext.Name = "buttonNext";
             this.buttonNext.Size = new System.Drawing.Size(75, 23);
-            this.buttonNext.TabIndex = 2;
+            this.buttonNext.TabIndex = 3;
             this.buttonNext.Text = "Next";
             this.buttonNext.UseVisualStyleBackColor = true;
             this.buttonNext.Click += new System.EventHandler(this.buttonNext_Click);
+            // 
+            // textBoxPage
+            // 
+            this.textBoxPage.Location = new System.Drawing.Point(278, 418);
+            this.textBoxPage.Name = "textBoxPage";
+            this.textBoxPage.ReadOnly = true;
+            this.textBoxPage.Size = new System.Drawing.Size(33, 20);
+            this.textBoxPage.TabIndex = 4;
+            this.textBoxPage.Text = "1";
             // 
             // FormMails
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.textBoxPage);
             this.Controls.Add(this.buttonNext);
             this.Controls.Add(this.buttonPrev);
             this.Controls.Add(this.dataGridView);
@@ -84,6 +95,7 @@ namespace CarFactoryView
             this.Load += new System.EventHandler(this.FormMails_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -92,5 +104,6 @@ namespace CarFactoryView
         private System.Windows.Forms.DataGridView dataGridView;
         private System.Windows.Forms.Button buttonPrev;
         private System.Windows.Forms.Button buttonNext;
+        private System.Windows.Forms.TextBox textBoxPage;
     }
 }

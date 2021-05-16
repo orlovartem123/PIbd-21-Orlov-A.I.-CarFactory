@@ -16,6 +16,12 @@ namespace CarFactoryBusinessLogic.BindingModels
         public string FromMailAddress { get; set; }
 
         [DataMember]
+        public int? ToSkip { get; set; }
+
+        [DataMember]
+        public int? ToTake { get; set; }
+
+        [DataMember]
         public string Subject { get; set; }
 
         [DataMember]
